@@ -76,7 +76,7 @@ __________________________________________
     if (this.state.missingConfig) {
       return (
         <main className="container">
-          <h2>IPFS</h2>
+          <h2>OpenLaw</h2>
           missing&nbsp;
           <Link to="/">
             config
