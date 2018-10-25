@@ -89,7 +89,6 @@ class IPFS extends Component {
     let accounts = await this.web3.eth.personal.getAccounts();
     if (!accounts || accounts.length === 0) {
       console.error("Can't find accounts in the target node");
-      process.exit(1);
     }
     let theContract = utils.getContract(this.web3, contractJson, '', [this.state.fileDescription, this.state.ipfsHash])
     let deployObj = theContract.encodeABI();
@@ -104,7 +103,6 @@ class IPFS extends Component {
       })
       .on('error', (err) => {
         console.error('Failed to deploy the smart contract. Error: ' + err);
-        process.exit(1);
       })
       .then((newInstance) => {
         console.log(newInstance)

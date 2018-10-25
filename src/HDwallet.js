@@ -100,7 +100,6 @@ class HDwallet extends Component {
         })
         .on('error', (err) => {
           console.error('Failed to deploy the smart contract. Error: ' + err);
-          process.exit(1);
         })
         .then((newInstance) => {
           console.log(newInstance)
@@ -167,7 +166,7 @@ class HDwallet extends Component {
             <div className="col-sm-7">
               <textarea disabled={this.state.locked} onChange={this.msgChanged} 
                         className="form-control"
-                        rows="2" value = {this.msg} />
+                        rows="2" value = {this.state.msg} />
             </div>
             { !this.state.locked ?
             <div className="col-sm-3">

@@ -5,6 +5,7 @@ import HDwallet from './HDwallet'
 import IPFS from './IPFS'
 import OpenLaw from './OpenLaw'
 import IDregistry from './IDregistry'
+import AuditLog from './AuditLog'
 
 class App extends Component {
   render() {
@@ -32,6 +33,9 @@ class App extends Component {
               <Link to="/openlaw">
                 <button className="btn btn-link">OpenLaw</button>
               </Link>
+              <Link to="/auditlog">
+                <button className="btn btn-link">Audit Log</button>
+              </Link>
             </div>
           </header>
           <hr />
@@ -41,6 +45,7 @@ class App extends Component {
             <Route exact path="/ipfs" component={IPFS} />
             <Route exact path="/idregistry" component={IDregistry} />
             <Route exact path="/openlaw" component={OpenLaw} />
+            <Route exact path="/auditlog" component={AuditLog} />
           </div>
         </div>
       </Router>
