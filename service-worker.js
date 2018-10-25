@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/kaleido-samples/precache-manifest.4cbe547ce68ddd12982a30ecce4707e4.js"
+  "/kaleido-samples-gallery/precache-manifest.2adb29bd173e1904ba688d3b57030943.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/kaleido-samples/index.html", {
+workbox.routing.registerNavigationRoute("/kaleido-samples-gallery/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
