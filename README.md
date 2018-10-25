@@ -1,1 +1,1 @@
-## Hi
+## Kaleido.io samples gallery

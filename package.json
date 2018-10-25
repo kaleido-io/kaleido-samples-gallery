@@ -1,6 +1,6 @@
 {
-  "name": "kaleido-samples",
-  "homepage": "http://jebonfig.github.io/kaleido-samples",
+  "name": "kaleido-samples-gallery",
+  "homepage": "http://kaleido-io.github.io/kaleido-samples-gallery",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
