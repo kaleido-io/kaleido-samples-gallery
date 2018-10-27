@@ -10,6 +10,7 @@ const utils = {
     t.hdwalletWalletId = localStorage.getItem('hdwalletWalletId');
     t.ipfsRpcEndpoint = localStorage.getItem('ipfsRpcEndpoint');
     t.openlawRpcEndpoint = localStorage.getItem('openlawRpcEndpoint');
+    t.idRegistryRpcEndpoint = localStorage.getItem('idRegistryRpcEndpoint');
   },
 
   buildWeb3(t) {
@@ -21,15 +22,20 @@ const utils = {
   getContract(web3, contract, contractAddress, contractArgs) {
     let abi = JSON.parse(contract.abi);
     let bytecode = '0x' + contract.bytecode;
-    let ret = new web3.eth.Contract(abi, contractAddress);
-    if (!contractAddress) {
-      // this is a new deployment, build the deploy object
-      ret = ret.deploy({
-        data: bytecode,
-        arguments: contractArgs
-      });
+    try {
+      let ret = new web3.eth.Contract(abi, contractAddress);
+      if (!contractAddress) {
+        // this is a new deployment, build the deploy object
+        ret = ret.deploy({
+          data: bytecode,
+          arguments: contractArgs
+        });
+      }
+      return ret;
+    } catch(err) {
+      console.error('Failed to get contract', err)
     }
-    return ret;
+    return null;
   },
 
   buildServiceUrlWithCreds(t, serviceRpcEndpoint) {

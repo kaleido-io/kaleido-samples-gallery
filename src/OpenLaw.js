@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import utils from './utils'
-import { Link } from 'react-router-dom';
+import MissingConfig from './Shared'
 
 class OpenLaw extends Component {
   constructor(props) {
@@ -75,13 +75,7 @@ __________________________________________
   render() {
     if (this.state.missingConfig) {
       return (
-        <main className="container">
-          <h2>OpenLaw</h2>
-          missing&nbsp;
-          <Link to="/">
-            config
-          </Link>
-        </main>
+        <MissingConfig header="OpenLaw" />
       )
     }
     return (

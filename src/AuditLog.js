@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import contractJson from './contracts/auditlog.json'
 import utils from './utils'
-import { Link } from 'react-router-dom';
 import { Timeline, TimelineBlip } from 'react-event-timeline'
 import JSONPretty from 'react-json-pretty';
+import MissingConfig from './Shared'
 
 class AuditLog extends Component {
   constructor(props) {
     super(props)
     utils.bindLocalStorage(this)
     utils.buildWeb3(this)
-    this.state = {     
+    this.state = {
       missingConfig: false,
-      contractDeploying: false,
       contractExistsInLocalStorage: localStorage.getItem('auditLogContractAddress') ? true : false,
       contractAddress: localStorage.getItem('auditLogContractAddress'),
       validMsg: false,
@@ -22,7 +21,11 @@ class AuditLog extends Component {
       viewRecordId: 0,
       viewRecordEntityAddress: '',
       viewPrettyJson: '',
-      viewJsonMessage: 'click record on left to view transaction details'
+      viewJsonMessage: 'click record on left to view transaction details',
+      showEditingContract: false,
+      editContractAddress: '',
+      editContractAddressValid: false,
+      modifyingContract: false
     }
   }
 
@@ -40,13 +43,8 @@ class AuditLog extends Component {
 
   deployingContract = () => {
     this.setState(() => ({
-      contractDeploying: true
+      modifyingContract: true
     }), () => this.deployContract());
-  }
-
-  clearContract = () => {
-    localStorage.removeItem('auditLogContractAddress')
-    window.location.reload();
   }
 
   async getNumberOfRecords() {
@@ -78,7 +76,8 @@ class AuditLog extends Component {
         console.log(`\tSmart contract deployed, ready to take calls at '${newInstance.contractAddress}'`);
         this.setState(() => ({
           contractAddress: newInstance.contractAddress,
-          contractExistsInLocalStorage: true
+          contractExistsInLocalStorage: true,
+          modifyingContract: false
         }), () => localStorage.setItem('auditLogContractAddress', newInstance.contractAddress));
       });
   }
@@ -109,9 +108,6 @@ class AuditLog extends Component {
     }), async () => {
       let theContract = utils.getContract(this.web3, contractJson, this.state.contractAddress, [])
       let accounts = await this.web3.eth.personal.getAccounts();
-      if (!accounts || accounts.length === 0) {
-        console.error("Can't find accounts in the target node");
-      }
       let params = {
         from: accounts[0],
         gas: 5000000
@@ -133,15 +129,13 @@ class AuditLog extends Component {
   };
 
   renderTimelines() {
-    let records = [];
-    for (let i = this.state.auditRecordCount - 1; i >= 0; i--) {
+    let records = [], max = 100
+    for (let i = this.state.auditRecordCount - 1; i >= 0 && max > 0; i--, max--) {
       let color = i % 2 === 0 ? "#03a9f4" : "#6fba1c"
       records.push(
-        <TimelineBlip
-          key={i+1}
-          title={`#${i+1}`}
-          iconColor={color}
-          onClick={() => this.fetchRecord(i)} />)
+        <div key={i+1} style={{cursor: 'pointer'}} onClick={() => this.fetchRecord(i)}>
+          <TimelineBlip title={`#${i+1}`} iconColor={color}/>
+        </div>)
     }
     return records;
   }
@@ -162,21 +156,89 @@ class AuditLog extends Component {
     });
   }
 
+  editingContract = () => {
+    this.setState(() => ({
+      showEditingContract: !this.state.showEditingContract
+    }));
+  }
+
+  clearContract = () => {
+    this.setState(() => ({
+      modifyingContract: true
+    }), () => {
+      localStorage.removeItem('auditLogContractAddress')
+      window.location.reload()
+    });
+  }
+
+  changeContractAddress = () => {
+    this.setState(() => ({
+      modifyingContract: true
+    }), () => {
+      let theContract = utils.getContract(this.web3, contractJson, this.state.editContractAddress, []);
+      if (!theContract) {
+        alert("invalid contract address")
+        this.setState(() => ({
+          modifyingContract: false
+        }))
+      }
+      localStorage.setItem('auditLogContractAddress', this.state.editContractAddress)
+      window.location.reload()
+    });
+  }
+
+  editContractAddressChanged = (event) => {
+    const val = event.target.value
+    this.setState(() => ({
+      editContractAddress: val,
+      editContractAddressValid: val.startsWith('0x') && val.length === 42
+    }));
+  };
+
+  editContractPanel = () => {
+    return (
+      <div>        
+        <div className="col-sm-12">
+          <button className="btn btn-sm btn-link" onClick={() => this.editingContract()}>load a previously deployed contract</button>
+        </div>
+        { this.state.showEditingContract ?
+        <div>
+          <small className="col-sm-12">
+            load a previously deployed contract, or, clear the above loaded contract from local storage so you can start over and deploy a brand new one
+          </small>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Audit log contract address</label>
+            <div className="col-sm-5">
+              <input disabled={this.state.modifyingContract} type="text" className="form-control" onChange={this.editContractAddressChanged} />
+            </div>
+            <div className="col-sm-5">
+              <button disabled={!this.state.editContractAddressValid || this.state.modifyingContract} type="button" className="btn btn-sm btn-primary" 
+                      onClick={() => this.changeContractAddress()}>
+                load contract
+              </button>
+              { this.state.contractExistsInLocalStorage ? <small style={{marginLeft: '15px'}}>or</small> : null }
+              { this.state.contractExistsInLocalStorage ? 
+                <button style={{marginLeft: '15px'}} type="button" className="btn btn-sm btn-warning" disabled={this.state.modifyingContract}
+                        onClick={() => this.clearContract()}>
+                  clear current contract
+                </button> : null }
+            </div>
+          </div>
+        </div>  : null }
+      </div>
+    )
+  }
+
   render() {
     if (this.state.missingConfig) {
       return (
-        <main className="container">
-          <h2>Audit Log</h2>
-          missing&nbsp;
-          <Link to="/">
-            config
-          </Link>
-        </main>
+        <MissingConfig header="Audit Log" />
       )
     }
     const timelinePanel = {
       overflowY: 'scroll',
-      maxHeight: '500px'
+      maxHeight: '500px',
+      borderRight: '1px solid rgba(0,0,0,.1)',
     }
     return (
       <main className="container">
@@ -189,28 +251,25 @@ class AuditLog extends Component {
         { !this.state.contractExistsInLocalStorage ? 
         <div>
           <h6>
-            Step 1: Deploy audit log contract to track log records going forward
+            Step 1: Deploy a new audit log contract to track log records going forward, or, specify a previously deployed audit log contract
           </h6>
-          { !this.state.contractDeploying ?
           <div className="col-sm-3">
             <button type="button" className="btn btn-success" 
+                    disabled={ this.state.modifyingContract }
                     onClick={() => this.deployingContract()}>
-              Deploy to blockchain!
+              { this.state.modifyingContract ? "Deploying to blockchain..." : "Deploy to blockchain!" }
             </button>
-          </div> : null }
-          { this.state.contractDeploying && !this.state.contractAddress ?
-          <div className="col-sm-3">
-            <button type="button" disabled={true} className="btn btn-success">
-              Deploying to blockchain...
-            </button>
-          </div> : null }
+          </div>
+          <small>or</small>
+          {this.editContractPanel()}
         </div> : null }
         { this.state.contractAddress ? 
         <div>
           <h6>
-            The audit log contract has been deployed to the following address: <i>{this.state.contractAddress}</i>.
-            If you want to start over with a fresh contract,
-            <button className="btn btn-sm btn-link" onClick={() => this.clearContract()}>click here</button>
+            The audit log smart contract has been deployed to the following address: 
+            <i> {this.state.contractAddress}</i>.
+            <br />
+            {this.editContractPanel()}
           </h6>
           <br />
           <h6>Add new log record by calling a function on the smart contract</h6>

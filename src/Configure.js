@@ -12,6 +12,7 @@ class Configure extends Component {
     this.hdwalletWalletId = React.createRef()
     this.ipfsRpcEndpoint = React.createRef()
     this.openlawRpcEndpoint = React.createRef()
+    this.idRegistryRpcEndpoint = React.createRef()
   }
 
   componentDidMount() {
@@ -23,6 +24,7 @@ class Configure extends Component {
     this.hdwalletWalletId.current.value = localStorage.getItem('hdwalletWalletId');
     this.ipfsRpcEndpoint.current.value = localStorage.getItem('ipfsRpcEndpoint');
     this.openlawRpcEndpoint.current.value = localStorage.getItem('openlawRpcEndpoint');
+    this.idRegistryRpcEndpoint.current.value = localStorage.getItem('idRegistryRpcEndpoint');
   }
 
   updateLocalStorage = () => {
@@ -34,6 +36,7 @@ class Configure extends Component {
     localStorage.setItem('hdwalletWalletId', this.hdwalletWalletId.current.value);
     localStorage.setItem('ipfsRpcEndpoint', this.ipfsRpcEndpoint.current.value);
     localStorage.setItem('openlawRpcEndpoint', this.openlawRpcEndpoint.current.value);
+    localStorage.setItem('idRegistryRpcEndpoint', this.idRegistryRpcEndpoint.current.value);
     alert('latest settings saved!')
   }
 
@@ -92,6 +95,14 @@ class Configure extends Component {
           <div className="col-sm-6">
             <input type="text" className="form-control col-sm-12" ref={this.ipfsRpcEndpoint} />
             <small>(ex: http://zz..-zz..-ipfs.photic-local.io/api/v0)</small>
+          </div>
+        </div>
+        <h5>ID Registry</h5>
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">ID Registry RPC endpoint</label>
+          <div className="col-sm-6">
+            <input type="text" className="form-control col-sm-12" ref={this.idRegistryRpcEndpoint} />
+            <small>(ex: http://zz..-zz..-idregistry.photic-local.io)</small>
           </div>
         </div>
         <h5>OpenLaw</h5>

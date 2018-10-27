@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import contractJson from './contracts/ipfs.json'
-import { Link } from 'react-router-dom';
 import utils from './utils'
+import MissingConfig from './Shared'
 
 class IPFS extends Component {
   constructor(props) {
@@ -87,9 +87,6 @@ class IPFS extends Component {
 
   async deployContract() {
     let accounts = await this.web3.eth.personal.getAccounts();
-    if (!accounts || accounts.length === 0) {
-      console.error("Can't find accounts in the target node");
-    }
     let theContract = utils.getContract(this.web3, contractJson, '', [this.state.fileDescription, this.state.ipfsHash])
     let deployObj = theContract.encodeABI();
     let params = {
@@ -138,13 +135,7 @@ class IPFS extends Component {
   render() {
     if (this.state.missingConfig) {
       return (
-        <main className="container">
-          <h2>IPFS</h2>
-          missing&nbsp;
-          <Link to="/">
-            config
-          </Link>
-        </main>
+        <MissingConfig header="IPFS" />
       )
     }
     return (
@@ -164,8 +155,8 @@ class IPFS extends Component {
           <label className="col-sm-2 col-form-label">Upload a file</label>
           <div className="col-sm-3">
             <input disabled={this.state.uploadedFile} type="file" 
-                    onChange={this.fileChangedHandler}
-                  ref={this.fileRef} />
+                   onChange={this.fileChangedHandler}
+                   ref={this.fileRef} />
           </div>
           { !this.state.uploadedFile ?
           <div className="col-sm-5">

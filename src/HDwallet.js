@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import contractJson from './contracts/hdwallet.json'
-import { Link } from 'react-router-dom';
 // import { sha256 } from 'js-sha256'
 import utils from './utils'
+import MissingConfig from './Shared'
 
 class HDwallet extends Component {
   constructor(props) {
@@ -134,19 +134,11 @@ class HDwallet extends Component {
       headers: headers
     }).then(response => response.json())
   }
-  
+
   render() {
     if (this.state.missingConfig) {
       return (
-        <main>
-          <div className="container">
-            <h2>HDWallet</h2>
-            missing&nbsp;
-            <Link to="/">
-              config
-            </Link>
-          </div>
-        </main>
+        <MissingConfig header="HDWallet" />
       )
     }
     return (
