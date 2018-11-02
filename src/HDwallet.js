@@ -129,7 +129,7 @@ class HDwallet extends Component {
     headers.append('Authorization', 'Basic ' + btoa(this.appCredsUsername + ':' + this.appCredsPassword));
     headers.append('content-type', 'application/json')
     headers.append('Accept', 'application/json, text/plain, */*',)
-    return fetch(`${this.hdwalletRpcEndpoint}/wallets/${this.hdwalletWalletId}/accounts/${hdwalletAccountIndex}`, {
+    return fetch(`${this.hdwalletRpcEndpoint}/api/v1/wallets/${this.hdwalletWalletId}/accounts/${hdwalletAccountIndex}`, {
       method: 'GET',
       headers: headers
     }).then(response => response.json())

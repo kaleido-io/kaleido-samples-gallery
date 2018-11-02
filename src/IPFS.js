@@ -53,7 +53,7 @@ class IPFS extends Component {
       headers.append('Accept', 'application/json, text/plain, */*',)  
       const formData = new FormData()
       formData.append('blob', this.state.selectedFile)
-      fetch(`${this.ipfsRpcEndpoint}/add`, {
+      fetch(`${this.ipfsRpcEndpoint}/api/v0/add`, {
         method: 'POST',
         headers: headers,
         body: formData
@@ -61,7 +61,7 @@ class IPFS extends Component {
       .then(r => r.json())
       .then(data => {
         console.log(data)
-        let ipfsLink = utils.buildServiceUrlWithCreds(this, this.ipfsRpcEndpoint)
+        let ipfsLink = utils.buildServiceUrlWithCreds(this, `${this.ipfsRpcEndpoint}/api/v0`)
         this.setState(() => ({
           ipfsHash: data.Hash,
           ipfsLink: `${ipfsLink}/cat/${data.Hash}`,
@@ -125,7 +125,7 @@ class IPFS extends Component {
     var headers = new Headers();
     headers.append('Authorization', 'Basic ' + btoa(this.appCredsUsername + ':' + this.appCredsPassword));
     headers.append('Accept', 'application/json, text/plain, */*',)
-    let url = `${this.ipfsRpcEndpoint}/get/${this.state.ipfsHash}`
+    let url = `${this.ipfsRpcEndpoint}/api/v0/get/${this.state.ipfsHash}`
     fetch(url, {
       method: 'GET',
       headers: headers

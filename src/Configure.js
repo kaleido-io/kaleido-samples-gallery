@@ -73,7 +73,7 @@ class Configure extends Component {
           <label className="col-sm-2 col-form-label">Node RPC endpoint</label>
           <div className="col-sm-6">
             <input type="text" className="form-control col-sm-12" ref={this.nodeRpcEndpoint} />
-            <small>(ex: http://zz..-zz..-rpc.photic-local.io)</small>
+            <small>(ex: http://zz..-zz..-rpc.us-east-2.kaleido.io)</small>
           </div>
         </div>
         <h5>HDWallet</h5>
@@ -81,6 +81,7 @@ class Configure extends Component {
           <label className="col-sm-2 col-form-label">HDWallet RPC endpoint</label>
           <div className="col-sm-6">
             <input type="text" className="form-control col-sm-12" ref={this.hdwalletRpcEndpoint} />
+            <small>(ex: https://zz..-zz..-hdwallet.us-east-2.kaleido.io)</small>
           </div>
         </div>
         <div className="form-group row">
@@ -94,7 +95,7 @@ class Configure extends Component {
           <label className="col-sm-2 col-form-label">IPFS RPC endpoint</label>
           <div className="col-sm-6">
             <input type="text" className="form-control col-sm-12" ref={this.ipfsRpcEndpoint} />
-            <small>(ex: http://zz..-zz..-ipfs.photic-local.io/api/v0)</small>
+            <small>(ex: https://zz..-zz..-ipfs.us-east-2.kaleido.io)</small>
           </div>
         </div>
         <h5>ID Registry</h5>
@@ -102,7 +103,7 @@ class Configure extends Component {
           <label className="col-sm-2 col-form-label">ID Registry RPC endpoint</label>
           <div className="col-sm-6">
             <input type="text" className="form-control col-sm-12" ref={this.idRegistryRpcEndpoint} />
-            <small>(ex: http://zz..-zz..-idregistry.photic-local.io)</small>
+            <small>(ex: http://zz..-zz..-idregistry.us-east-2.kaleido.io)</small>
           </div>
         </div>
         <h5>OpenLaw</h5>
@@ -110,7 +111,7 @@ class Configure extends Component {
           <label className="col-sm-2 col-form-label">OpenLaw RPC endpoint</label>
           <div className="col-sm-6">
             <input type="text" className="form-control col-sm-12" ref={this.openlawRpcEndpoint} />
-            <small>(ex: http://zz..-zz..-openlaw.photic-local.io)</small>
+            <small>(ex: http://zz..-zz..-openlaw.us-east-2.kaleido.io)</small>
           </div>
         </div>
         <div className="form-group row">
