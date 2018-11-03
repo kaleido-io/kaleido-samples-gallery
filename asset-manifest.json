@@ -1,13 +1,13 @@
 {
-  "main.css": "/kaleido-samples-gallery/static/css/main.7f01b61e.chunk.css",
-  "main.js": "/kaleido-samples-gallery/static/js/main.83b59427.chunk.js",
-  "main.js.map": "/kaleido-samples-gallery/static/js/main.83b59427.chunk.js.map",
-  "static/js/1.cad2ef21.chunk.js": "/kaleido-samples-gallery/static/js/1.cad2ef21.chunk.js",
-  "static/js/1.cad2ef21.chunk.js.map": "/kaleido-samples-gallery/static/js/1.cad2ef21.chunk.js.map",
+  "main.css": "/kaleido-samples-gallery/static/css/main.2bc26690.chunk.css",
+  "main.js": "/kaleido-samples-gallery/static/js/main.a9cd5723.chunk.js",
+  "main.js.map": "/kaleido-samples-gallery/static/js/main.a9cd5723.chunk.js.map",
+  "static/js/1.79e00c42.chunk.js": "/kaleido-samples-gallery/static/js/1.79e00c42.chunk.js",
+  "static/js/1.79e00c42.chunk.js.map": "/kaleido-samples-gallery/static/js/1.79e00c42.chunk.js.map",
   "runtime~main.js": "/kaleido-samples-gallery/static/js/runtime~main.38bc574b.js",
   "runtime~main.js.map": "/kaleido-samples-gallery/static/js/runtime~main.38bc574b.js.map",
-  "static/css/main.7f01b61e.chunk.css.map": "/kaleido-samples-gallery/static/css/main.7f01b61e.chunk.css.map",
+  "static/css/main.2bc26690.chunk.css.map": "/kaleido-samples-gallery/static/css/main.2bc26690.chunk.css.map",
   "index.html": "/kaleido-samples-gallery/index.html",
-  "precache-manifest.b5cc43d24e58dcfedc6fdededbb9e2f5.js": "/kaleido-samples-gallery/precache-manifest.b5cc43d24e58dcfedc6fdededbb9e2f5.js",
+  "precache-manifest.6718db0fcaa62a1d87918bf9b59b05e6.js": "/kaleido-samples-gallery/precache-manifest.6718db0fcaa62a1d87918bf9b59b05e6.js",
   "service-worker.js": "/kaleido-samples-gallery/service-worker.js"
 }
