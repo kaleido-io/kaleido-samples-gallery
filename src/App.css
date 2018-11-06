@@ -1,0 +1,9 @@
+.modal {top:auto;left:auto;bottom:auto;right:auto;}
+
+.ndaPreview ul {
+  list-style: none;
+}
+
+.ndaPreview li {
+  margin-bottom: 1em;
+}

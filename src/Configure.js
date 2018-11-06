@@ -12,6 +12,8 @@ class Configure extends Component {
     this.hdwalletWalletId = React.createRef()
     this.ipfsRpcEndpoint = React.createRef()
     this.openlawRpcEndpoint = React.createRef()
+    this.openlawAccountEmail = React.createRef()
+    this.openlawAccountPassword = React.createRef()
     this.idRegistryRpcEndpoint = React.createRef()
   }
 
@@ -24,6 +26,8 @@ class Configure extends Component {
     this.hdwalletWalletId.current.value = localStorage.getItem('hdwalletWalletId');
     this.ipfsRpcEndpoint.current.value = localStorage.getItem('ipfsRpcEndpoint');
     this.openlawRpcEndpoint.current.value = localStorage.getItem('openlawRpcEndpoint');
+    this.openlawAccountEmail.current.value = localStorage.getItem('openlawAccountEmail');
+    this.openlawAccountPassword.current.value = localStorage.getItem('openlawAccountPassword');
     this.idRegistryRpcEndpoint.current.value = localStorage.getItem('idRegistryRpcEndpoint');
   }
 
@@ -36,6 +40,8 @@ class Configure extends Component {
     localStorage.setItem('hdwalletWalletId', this.hdwalletWalletId.current.value);
     localStorage.setItem('ipfsRpcEndpoint', this.ipfsRpcEndpoint.current.value);
     localStorage.setItem('openlawRpcEndpoint', this.openlawRpcEndpoint.current.value);
+    localStorage.setItem('openlawAccountEmail', this.openlawAccountEmail.current.value);
+    localStorage.setItem('openlawAccountPassword', this.openlawAccountPassword.current.value);
     localStorage.setItem('idRegistryRpcEndpoint', this.idRegistryRpcEndpoint.current.value);
     alert('latest settings saved!')
   }
@@ -112,6 +118,18 @@ class Configure extends Component {
           <div className="col-sm-6">
             <input type="text" className="form-control col-sm-12" ref={this.openlawRpcEndpoint} />
             <small>(ex: https://zz..-zz..-openlaw.us-east-2.kaleido.io)</small>
+          </div>
+        </div>
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">OpenLaw account email</label>
+          <div className="col-sm-6">
+            <input type="text" className="form-control col-sm-12" ref={this.openlawAccountEmail} />
+          </div>
+        </div>
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">OpenLaw account password</label>
+          <div className="col-sm-6">
+            <input type="password" className="form-control col-sm-12" ref={this.openlawAccountPassword} />
           </div>
         </div>
         <div className="form-group row">

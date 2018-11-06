@@ -10,6 +10,8 @@ const utils = {
     t.hdwalletWalletId = localStorage.getItem('hdwalletWalletId');
     t.ipfsRpcEndpoint = localStorage.getItem('ipfsRpcEndpoint');
     t.openlawRpcEndpoint = localStorage.getItem('openlawRpcEndpoint');
+    t.openlawAccountEmail = localStorage.getItem('openlawAccountEmail');
+    t.openlawAccountPassword = localStorage.getItem('openlawAccountPassword');
     t.idRegistryRpcEndpoint = localStorage.getItem('idRegistryRpcEndpoint');
   },
 

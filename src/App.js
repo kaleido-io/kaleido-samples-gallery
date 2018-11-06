@@ -13,10 +13,6 @@ class App extends Component {
       <Router basename={process.env.PUBLIC_URL}>
         <div>
           <header className="">
-            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-                  rel="stylesheet" 
-                  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
-                  crossOrigin="anonymous" />
             <div>
               <Link to="/">
                 <button className="btn btn-link">Configure</button>
