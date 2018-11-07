@@ -168,7 +168,7 @@ class OpenLaw extends Component {
         <Image src='/imgs/top-image.png' />
         <Header as='h1' attached='top'>
           Create New Joint Venture Project 
-          <a target='blank' href="https://github.com/kaleido-io/kaleido-samples-gallery/docs/openlaw/README.md" 
+          <a target='blank' href="https://github.com/kaleido-io/kaleido-samples-gallery/tree/master/docs/openlaw" 
              style={{marginLeft: '50px', fontSize: 'small'}}>view instructions
           </a>
         </Header>
