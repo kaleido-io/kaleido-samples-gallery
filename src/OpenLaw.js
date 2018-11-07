@@ -11,13 +11,19 @@ class OpenLaw extends Component {
     utils.bindLocalStorage(this)
 
     this.openLawConfig = {
-      server: 'https://staging.dev.openlaw.io',//utils.buildServiceUrlWithCreds(this, this.openlawRpcEndpoint),
-      templateName: 'NDA Demo (Kaleido)',
+      server: utils.buildServiceUrlWithCreds(this, this.openlawRpcEndpoint),
+      templateName: 'NDA DEMO (KALEIDO)',
       userName: this.openlawAccountEmail,
       password: this.openlawAccountPassword
     }
 
-    this.apiClient = new APIClient(this.openLawConfig.server);
+    this.apiClient = new APIClient({
+      root: this.openlawRpcEndpoint,
+      auth: {
+        username: this.appCredsUsername,
+        password: this.appCredsPassword
+      }
+    });
     
     this.state = {
       missingConfig: false,
@@ -43,7 +49,7 @@ class OpenLaw extends Component {
   }
 
   componentDidMount = () => {
-    if (!this.appCredsUsername || !this.appCredsPassword || !this.nodeRpcEndpoint || !this.openlawRpcEndpoint ||
+    if (!this.appCredsUsername || !this.appCredsPassword || !this.openlawRpcEndpoint ||
         !this.openlawAccountEmail || !this.openlawAccountPassword) {
       this.setState(() => ({
         missingConfig: true
@@ -153,14 +159,19 @@ class OpenLaw extends Component {
   render() {
     if (this.state.missingConfig) {
       return (
-        <MissingConfig header="OpenLaw" />
+        <MissingConfig header="OpenLaw" text="be sure to configure the OpenLaw RPC endpoint along with a valid Openlaw account email & password" />
       )
     }
 
     return (
       <Container>
         <Image src='/imgs/top-image.png' />
-        <Header as='h1' attached='top'>Create New Joint Venture Project</Header>
+        <Header as='h1' attached='top'>
+          Create New Joint Venture Project 
+          <a target='blank' href="https://github.com/kaleido-io/kaleido-samples-gallery/docs/openlaw/README.md" 
+             style={{marginLeft: '50px', fontSize: 'small'}}>view instructions
+          </a>
+        </Header>
         <Segment attached>
           <Header.Subheader>New land development, farm exploration, or other joint venture projects</Header.Subheader>
           <Step.Group ordered>

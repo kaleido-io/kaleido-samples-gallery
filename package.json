@@ -6,7 +6,7 @@
   "dependencies": {
     "@photic/design-kit": "^2.0.15",
     "js-sha256": "^0.9.0",
-    "openlaw": "^0.1.0",
+    "openlaw": "^0.1.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-event-timeline": "^1.5.4",

@@ -10,6 +10,7 @@ function MissingConfig(props) {
         <Link to="/">
           config
         </Link>
+        <p>{props.text}</p>
       </div>
     </main>
   )
