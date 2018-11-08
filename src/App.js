@@ -6,6 +6,7 @@ import IPFS from './IPFS'
 import OpenLaw from './OpenLaw'
 import IDregistry from './IDregistry'
 import AuditLog from './AuditLog'
+import Chainlink from './Chainlink'
 
 class App extends Component {
   render() {
@@ -32,6 +33,9 @@ class App extends Component {
               <Link to="/auditlog">
                 <button className="btn btn-link">Audit Log</button>
               </Link>
+              <Link to="/chainlink">
+                <button className="btn btn-link">Chainlink</button>
+              </Link>
             </div>
           </header>
           <hr />
@@ -42,6 +46,7 @@ class App extends Component {
             <Route exact path="/idregistry" component={IDregistry} />
             <Route exact path="/openlaw" component={OpenLaw} />
             <Route exact path="/auditlog" component={AuditLog} />
+            <Route exact path="/chainlink" component={Chainlink} />
           </div>
         </div>
       </Router>

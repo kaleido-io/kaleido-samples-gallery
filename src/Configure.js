@@ -15,6 +15,9 @@ class Configure extends Component {
     this.openlawAccountEmail = React.createRef()
     this.openlawAccountPassword = React.createRef()
     this.idRegistryRpcEndpoint = React.createRef()
+    this.chainlinkLinkAddr = React.createRef()
+    this.chainlinkOracleAddr = React.createRef()
+    this.chainlinkJobID = React.createRef()
   }
 
   componentDidMount() {
@@ -29,6 +32,9 @@ class Configure extends Component {
     this.openlawAccountEmail.current.value = localStorage.getItem('openlawAccountEmail');
     this.openlawAccountPassword.current.value = localStorage.getItem('openlawAccountPassword');
     this.idRegistryRpcEndpoint.current.value = localStorage.getItem('idRegistryRpcEndpoint');
+    this.chainlinkLinkAddr.current.value = localStorage.getItem('chainlinkLinkAddr');
+    this.chainlinkOracleAddr.current.value = localStorage.getItem('chainlinkOracleAddr');
+    this.chainlinkJobID.current.value = localStorage.getItem('chainlinkJobID');
   }
 
   updateLocalStorage = () => {
@@ -43,6 +49,9 @@ class Configure extends Component {
     localStorage.setItem('openlawAccountEmail', this.openlawAccountEmail.current.value);
     localStorage.setItem('openlawAccountPassword', this.openlawAccountPassword.current.value);
     localStorage.setItem('idRegistryRpcEndpoint', this.idRegistryRpcEndpoint.current.value);
+    localStorage.setItem('chainlinkLinkAddr', this.chainlinkLinkAddr.current.value);
+    localStorage.setItem('chainlinkOracleAddr', this.chainlinkOracleAddr.current.value);
+    localStorage.setItem('chainlinkJobID', this.chainlinkJobID.current.value);
     alert('latest settings saved!')
   }
 
@@ -56,13 +65,6 @@ class Configure extends Component {
         </h5>
         <br />
         <h5>Shared</h5>
-        <div className="form-group row">
-          <label className="col-sm-2 col-form-label">Consortia ID</label>
-          <div className="col-sm-4">
-            <input type="text" className="form-control col-sm-12" ref={this.consortiaId} />
-            <small>(ex: zzabcd1234)</small>
-          </div>
-        </div>
         <div className="form-group row">
           <label className="col-sm-2 col-form-label">App credentials username</label>
           <div className="col-sm-4">
@@ -83,6 +85,13 @@ class Configure extends Component {
           </div>
         </div>
         <h5>HDWallet</h5>
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Consortia ID (for block explorer)</label>
+          <div className="col-sm-4">
+            <input type="text" className="form-control col-sm-12" ref={this.consortiaId} />
+            <small>(ex: zzabcd1234)</small>
+          </div>
+        </div>
         <div className="form-group row">
           <label className="col-sm-2 col-form-label">HDWallet RPC endpoint</label>
           <div className="col-sm-6">
@@ -132,6 +141,28 @@ class Configure extends Component {
             <input type="password" className="form-control col-sm-12" ref={this.openlawAccountPassword} />
           </div>
         </div>
+        <h5>Chainlink</h5>
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Link Contract Address</label>
+          <div className="col-sm-6">
+            <input type="text" className="form-control col-sm-12" ref={this.chainlinkLinkAddr} />
+            <small>(ex: 0x145e7Aa18A4A5874c92eb177972173320F217c19)</small>
+          </div>
+        </div>        
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Oracle Contract Address</label>
+          <div className="col-sm-6">
+            <input type="text" className="form-control col-sm-12" ref={this.chainlinkOracleAddr} />
+            <small>(ex: 0xb4acb933676c0a76d9bb5f10791cb6d82c71f19d)</small>
+          </div>
+        </div>        
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">JobID</label>
+          <div className="col-sm-6">
+            <input type="text" className="form-control col-sm-12" ref={this.chainlinkJobID} />
+            <small>(ex: 956bd4ef57a14536b72fc705376b82f4)</small>
+          </div>
+        </div>        
         <div className="form-group row">
           <div className="col-sm-6">
           <button type="button"className="btn btn-success" onClick={() => this.updateLocalStorage()}>

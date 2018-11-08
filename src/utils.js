@@ -13,6 +13,9 @@ const utils = {
     t.openlawAccountEmail = localStorage.getItem('openlawAccountEmail');
     t.openlawAccountPassword = localStorage.getItem('openlawAccountPassword');
     t.idRegistryRpcEndpoint = localStorage.getItem('idRegistryRpcEndpoint');
+    t.chainlinkLinkAddr = localStorage.getItem('chainlinkLinkAddr');
+    t.chainlinkOracleAddr = localStorage.getItem('chainlinkOracleAddr');
+    t.chainlinkJobID = localStorage.getItem('chainlinkJobID');
   },
 
   buildWeb3(t) {
