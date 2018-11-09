@@ -285,7 +285,7 @@ class OpenLaw extends Component {
               <Modal open={this.state.ndaModalOpen} closeIcon>
                 <Modal.Header>Non-Disclosure Agreement</Modal.Header>
                 <Modal.Content image >
-                  <Image src='/imgs/openlaw-300.png' wrapped size="small" />
+                  <Image src={process.env.PUBLIC_URL + '/imgs/openlaw-300.png'} wrapped size="small" />
                   <Modal.Description>
                     <p>You will now be redirected to OpenLaw where both parties will execute the NDA. Evidence of the agreement
                       will be stored on the blockchain.</p>
