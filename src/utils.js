@@ -16,11 +16,21 @@ const utils = {
     t.chainlinkLinkAddr = localStorage.getItem('chainlinkLinkAddr');
     t.chainlinkOracleAddr = localStorage.getItem('chainlinkOracleAddr');
     t.chainlinkJobID = localStorage.getItem('chainlinkJobID');
+
+    // t.chainlinkApiEndpoint = localStorage.getItem('chainlinkApiEndpoint');
+    // t.chainlinkEmail = localStorage.getItem('chainlinkEmail');
+    // t.chainlinkPassword = localStorage.getItem('chainlinkPassword');
   },
 
   buildWeb3(t) {
     if (t.appCredsUsername && t.appCredsPassword && t.nodeRpcEndpoint) {
-      priv.buildWeb3(t)
+      t.web3 = priv.buildWeb3(t)
+    }
+  },
+
+  getNewWeb3(t, useWebsocket = false) {
+    if (t.appCredsUsername && t.appCredsPassword && t.nodeRpcEndpoint) {
+      return priv.buildWeb3(t, useWebsocket)
     }
   },
 
@@ -43,15 +53,21 @@ const utils = {
     return null;
   },
 
-  buildServiceUrlWithCreds(t, serviceRpcEndpoint) {
+  buildServiceUrlWithCreds(t, serviceRpcEndpoint, useWebsocket = false) {
     let prefix = serviceRpcEndpoint.startsWith('http://') ? 'http://' : 'https://'
-    return `${prefix}${t.appCredsUsername}:${t.appCredsPassword}@${serviceRpcEndpoint.replace(prefix, '')}`
+    let protocol = useWebsocket ? "wss://" : prefix
+    let endpoint = serviceRpcEndpoint.replace(prefix, '')
+    if (useWebsocket) endpoint = endpoint.replace('-rpc.', '-wss.')
+    return `${protocol}${t.appCredsUsername}:${t.appCredsPassword}@${endpoint}`
   }
 }
 
 const priv = {
-  buildWeb3(t) {
-    t.web3 = new Web3(utils.buildServiceUrlWithCreds(t, t.nodeRpcEndpoint))
+  buildWeb3(t, useWebsocket = false) {
+    if (useWebsocket) {
+      return new Web3(new Web3.providers.WebsocketProvider(utils.buildServiceUrlWithCreds(t, t.nodeRpcEndpoint, useWebsocket)))  
+    }
+    return new Web3(utils.buildServiceUrlWithCreds(t, t.nodeRpcEndpoint, useWebsocket))
   }
 }
 

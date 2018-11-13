@@ -24,9 +24,9 @@ class App extends Component {
               <Link to="/ipfs">
                 <button className="btn btn-link">IPFS</button>
               </Link>
-              <Link to="/idregistry">
+              {/* <Link to="/idregistry">
                 <button className="btn btn-link">ID Registry</button>
-              </Link>
+              </Link> */}
               <Link to="/openlaw">
                 <button className="btn btn-link">OpenLaw</button>
               </Link>

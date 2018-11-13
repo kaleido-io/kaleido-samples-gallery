@@ -7,6 +7,7 @@ contract ChainlinkEthPrice is Chainlinked {
     struct EthPriceAtBlock
     {
         uint    blockNumber;
+        uint    blockTimestamp;
         bytes32 requestId;
         uint256 reportedPrice;
     }
@@ -35,10 +36,19 @@ contract ChainlinkEthPrice is Chainlinked {
     {
         ethPrices.push(EthPriceAtBlock({
             blockNumber: block.number,
+            blockTimestamp: block.timestamp,
             requestId: _requestId,
             reportedPrice: _reportedPrice
         }));
+        emit RequestEthereumPriceFulfilled(_requestId, _reportedPrice, block.number, block.timestamp);
     }
+
+    event RequestEthereumPriceFulfilled(
+        bytes32 indexed requestId,
+        uint256 indexed reportedPrice,
+        uint256 blockNumber,
+        uint256 blockTimestamp
+    );
 
     function getDataCount() public view returns (uint length)
     {

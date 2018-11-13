@@ -18,6 +18,10 @@ class Configure extends Component {
     this.chainlinkLinkAddr = React.createRef()
     this.chainlinkOracleAddr = React.createRef()
     this.chainlinkJobID = React.createRef()
+
+    // this.chainlinkApiEndpoint = React.createRef()
+    // this.chainlinkEmail = React.createRef()
+    // this.chainlinkPassword = React.createRef()
   }
 
   componentDidMount() {
@@ -35,6 +39,10 @@ class Configure extends Component {
     this.chainlinkLinkAddr.current.value = localStorage.getItem('chainlinkLinkAddr');
     this.chainlinkOracleAddr.current.value = localStorage.getItem('chainlinkOracleAddr');
     this.chainlinkJobID.current.value = localStorage.getItem('chainlinkJobID');
+
+    // this.chainlinkApiEndpoint.current.value = localStorage.getItem('chainlinkApiEndpoint');
+    // this.chainlinkEmail.current.value = localStorage.getItem('chainlinkEmail');
+    // this.chainlinkPassword.current.value = localStorage.getItem('chainlinkPassword');
   }
 
   updateLocalStorage = () => {
@@ -52,6 +60,10 @@ class Configure extends Component {
     localStorage.setItem('chainlinkLinkAddr', this.chainlinkLinkAddr.current.value);
     localStorage.setItem('chainlinkOracleAddr', this.chainlinkOracleAddr.current.value);
     localStorage.setItem('chainlinkJobID', this.chainlinkJobID.current.value);
+
+    // localStorage.setItem('chainlinkApiEndpoint', this.chainlinkApiEndpoint.current.value);
+    // localStorage.setItem('chainlinkEmail', this.chainlinkEmail.current.value);
+    // localStorage.setItem('chainlinkPassword', this.chainlinkPassword.current.value);
     alert('latest settings saved!')
   }
 
@@ -78,7 +90,7 @@ class Configure extends Component {
           </div>
         </div>
         <div className="form-group row">
-          <label className="col-sm-2 col-form-label">Node RPC endpoint</label>
+          <label className="col-sm-2 col-form-label">Node JSON RPC endpoint</label>
           <div className="col-sm-6">
             <input type="text" className="form-control col-sm-12" ref={this.nodeRpcEndpoint} />
             <small>(ex: https://zz..-zz..-rpc.us-east-2.kaleido.io)</small>
@@ -162,7 +174,28 @@ class Configure extends Component {
             <input type="text" className="form-control col-sm-12" ref={this.chainlinkJobID} />
             <small>(ex: 956bd4ef57a14536b72fc705376b82f4)</small>
           </div>
-        </div>        
+        </div>
+        {/* <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Chainlink API endpoint</label>
+          <div className="col-sm-6">
+            <input type="text" className="form-control col-sm-12" ref={this.chainlinkApiEndpoint} />
+            <small>(ex: https://zz..-zz..-chainlink.dev-svcs.photic.io)</small>
+          </div>
+        </div>
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Chainlink username/email</label>
+          <div className="col-sm-6">
+            <input type="text" className="form-control col-sm-12" ref={this.chainlinkEmail} />
+            <small>(ex: 992ad8782cf38f7e@5e1be1892c901e94.com)</small>
+          </div>
+        </div>  
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Chainlink password</label>
+          <div className="col-sm-6">
+            <input type="text" className="form-control col-sm-12" ref={this.chainlinkPassword} />
+            <small>(ex: 552d08dffd651499)</small>
+          </div>
+        </div>   */}
         <div className="form-group row">
           <div className="col-sm-6">
           <button type="button"className="btn btn-success" onClick={() => this.updateLocalStorage()}>
