@@ -1,0 +1,1 @@
+{"initiators":[{"type":"RunLog","params":{}}],"tasks":[{"type":"HTTPGet","params":{"url":"https://bitstamp.net/api/ticker/"}},{"type":"JSONParse","params":{"path":["last"]}},{"type":"Multiply","params":{"times":100}},{"type":"EthUint256"},{"type":"EthTx"}]}
