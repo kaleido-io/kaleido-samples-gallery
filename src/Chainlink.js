@@ -13,7 +13,6 @@ class Chainlink extends Component {
     super(props)
     utils.bindLocalStorage(this)
     utils.buildWeb3(this)
-    this.wsWeb3 = utils.getNewWeb3(this, true)
     this.state = {
       missingConfig: false,
       contractExistsInLocalStorage: localStorage.getItem('chainlinkContractAddress') ? true : false,
@@ -117,8 +116,9 @@ class Chainlink extends Component {
   }
 
   async requestEthPrice() {
-    let theContract = utils.getContract(this.wsWeb3, contractJson, this.state.contractAddress, []);
-    let accounts = await this.wsWeb3.eth.personal.getAccounts();
+    let wsWeb3 = utils.getNewWeb3(this, true)
+    let theContract = utils.getContract(wsWeb3, contractJson, this.state.contractAddress, []);
+    let accounts = await wsWeb3.eth.personal.getAccounts();
     let params = {
       from: accounts[0],
       gas: 5000000
