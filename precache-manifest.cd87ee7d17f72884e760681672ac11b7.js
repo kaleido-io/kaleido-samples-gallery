@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/kaleido-samples-gallery/static/js/runtime~main.38bc574b.js"
   },
   {
-    "revision": "a9b0e1bfb0ff0206efe3",
-    "url": "/kaleido-samples-gallery/static/js/main.a9b0e1bf.chunk.js"
+    "revision": "9201a7043ae50d6945a8",
+    "url": "/kaleido-samples-gallery/static/js/main.9201a704.chunk.js"
   },
   {
     "revision": "01c8e7caa0ef03486f99",
     "url": "/kaleido-samples-gallery/static/js/1.01c8e7ca.chunk.js"
   },
   {
-    "revision": "a9b0e1bfb0ff0206efe3",
+    "revision": "9201a7043ae50d6945a8",
     "url": "/kaleido-samples-gallery/static/css/main.2f070f53.chunk.css"
   },
   {
-    "revision": "5051be9c4c029f9e585ec0d10186efd9",
+    "revision": "1fea46d98c34ba2c21e66a1bce01a06a",
     "url": "/kaleido-samples-gallery/index.html"
   }
 ];
