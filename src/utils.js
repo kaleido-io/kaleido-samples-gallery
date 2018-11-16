@@ -15,11 +15,7 @@ const utils = {
     t.idRegistryRpcEndpoint = localStorage.getItem('idRegistryRpcEndpoint');
     t.chainlinkLinkAddr = localStorage.getItem('chainlinkLinkAddr');
     t.chainlinkOracleAddr = localStorage.getItem('chainlinkOracleAddr');
-    t.chainlinkJobID = localStorage.getItem('chainlinkJobID');
-
-    // t.chainlinkApiEndpoint = localStorage.getItem('chainlinkApiEndpoint');
-    // t.chainlinkEmail = localStorage.getItem('chainlinkEmail');
-    // t.chainlinkPassword = localStorage.getItem('chainlinkPassword');
+    t.chainlinkApiEndpoint = localStorage.getItem('chainlinkApiEndpoint');
   },
 
   buildWeb3(t) {

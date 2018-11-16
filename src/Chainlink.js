@@ -33,13 +33,15 @@ class Chainlink extends Component {
       viewRecordId: 0,
       viewBlockNumber: '',
       viewBlockTimestamp: '',
-      viewEthPrice: ''
+      viewEthPrice: '',
+      jobId: '',
+      jobIdSaved: false
     }
   }
 
   componentDidMount = () => {
     if (!this.appCredsUsername || !this.appCredsPassword || !this.nodeRpcEndpoint ||
-        !this.chainlinkLinkAddr || !this.chainlinkOracleAddr || !this.chainlinkJobID) {
+        !this.chainlinkApiEndpoint || !this.chainlinkLinkAddr || !this.chainlinkOracleAddr) {
       this.setState(() => ({
         missingConfig: true
       }))
@@ -68,29 +70,13 @@ class Chainlink extends Component {
   }
 
   async deployContract() {
-    // chainlink uses cookies so need to think about best way to go about getting this to work directly
-    // from our browser based fetch sample 
-
-    // await fetch(`${this.chainlinkApiEndpoint}/sessions`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json'
-    //   },
-    //   // credentials: 'include',
-    //   body: JSON.stringify({ email: this.chainlinkEmail, password: this.chainlinkPassword })
-    // }).then(response => {
-    //   for (var pair of response.headers.entries()) {
-    //       console.log(pair[0]+ ': '+ pair[1]);
-    //   }
-    // })
-    // .catch(error => console.error('Error:', error));
-
-    if (!this.chainlinkJobID.startsWith('0x')) this.chainlinkJobID = '0x' + this.chainlinkJobID;
+    let chainlinkJobId = this.state.jobId
+    if (!chainlinkJobId.startsWith('0x')) chainlinkJobId = '0x' + chainlinkJobId;
     if (!this.chainlinkLinkAddr.startsWith('0x')) this.chainlinkLinkAddr = '0x' + this.chainlinkLinkAddr;
     if (!this.chainlinkOracleAddr.startsWith('0x')) this.chainlinkOracleAddr = '0x' + this.chainlinkOracleAddr;
     let accounts = await this.web3.eth.personal.getAccounts();
     let theContract = utils.getContract(this.web3, contractJson, '', [
-        this.chainlinkJobID, this.chainlinkLinkAddr, this.chainlinkOracleAddr
+      chainlinkJobId, this.chainlinkLinkAddr, this.chainlinkOracleAddr
     ])
     let deployObj = theContract.encodeABI();
     let params = {
@@ -264,8 +250,23 @@ class Chainlink extends Component {
 
   sampleJobId = () => {
     return (
-      <JSONPretty id="json-pretty" json={sampleJobSpec} className="form-control-plaintext"></JSONPretty>
+      <pre style={{backgroundColor:'#F3F2F2'}}>
+        <JSONPretty id="json-pretty" json={sampleJobSpec} className="form-control-plaintext"></JSONPretty>
+      </pre>
     )
+  }
+
+  jobIdChanged = (event) => {
+    const val = event.target.value
+    this.setState(() => ({
+      jobId: val
+    }));
+  }
+
+  saveJobId = () => {
+    this.setState(() => ({
+      jobIdSaved: true
+    }));
   }
 
   render() {
@@ -273,10 +274,9 @@ class Chainlink extends Component {
       return (
         <MissingConfig 
           header="Chainlink"
-          text="Once the chainlink service is provisioned you will need to log into the dashboard and view the Configuration page
-          to retrieve the LINK_CONTRACT_ADDRESS & ORACLE_CONTRACT_ADDRESS. Also, from within the dashboard, you will need to 
-          create a chainlink job spec on the Jobs page using the exact json below to retrieve the JOB_ID."
-          supplemental={this.sampleJobId()} />
+          text="you can retrieve the values for CHAINLINK API ENDPOINT, LINK_CONTRACT_ADDRESS & ORACLE_CONTRACT_ADDRESS
+          from the Chainlink service dashboard where you launch the Chainlink Web UI"
+        />
       )
     }
     const timelinePanel = {
@@ -296,8 +296,9 @@ class Chainlink extends Component {
           <button className="btn btn-sm btn-link" onClick={() => this.viewingContract()}>view contract source</button>
           <button style={{marginLeft: '25px'}} className="btn btn-sm btn-link" onClick={() => this.viewingJobSpec()}>view sample chainlink job spec</button>
         </div>
+        
         { this.state.showContractSource ?
-        <pre><code className='solidity'>
+        <pre style={{backgroundColor:'#F3F2F2'}}><code className='solidity'>
             {this.state.contractSolidityText}
         </code></pre>
         : null }
@@ -305,21 +306,45 @@ class Chainlink extends Component {
           this.sampleJobId()
         : null }
         <br />
+        
         { !this.state.contractExistsInLocalStorage ? 
         <div>
           <h6>
-            Step 1: Deploy a new Chainlink sample contract, or, specify a previously deployed Chainlink sample contract
+            Step 1: Login to the <a target="_blank" rel="noopener noreferrer" href={this.chainlinkApiEndpoint + '/jobs/new'}>Chainlink dashboard </a> 
+            to create a job spec by copying the exact sample chainlink job spec json provided above (or retrieve an already created job spec id). 
+            Once created, enter the job spec's JOB ID below as that will be needed for us to deploy the smart contract in the next step
           </h6>
-          <div className="col-sm-3">
-            <button type="button" className="btn btn-success" 
-                    disabled={ this.state.modifyingContract }
-                    onClick={() => this.deployingContract()}>
-              { this.state.modifyingContract ? "Deploying to blockchain..." : "Deploy to blockchain!" }
-            </button>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Chainlink JOB ID</label>
+            <div className="col-sm-5">
+              <input type="text" onChange={this.jobIdChanged} disabled={this.state.jobIdSaved}
+                     className="form-control"
+                     value = {this.state.jobId} />
+            </div>
+            <div className="col-sm-3">
+              <button disabled={!this.state.jobId || this.state.jobIdSaved}
+                      type="button" className="btn btn-primary" onClick={() => this.saveJobId()}>
+                Next
+              </button>
+            </div>
           </div>
-          <small>or</small>
-          {this.editContractPanel()}
+          {this.state.jobIdSaved ?
+          <div>
+            <h6>
+              Step 2: Deploy a new Chainlink sample contract, or, specify a previously deployed Chainlink sample contract
+            </h6>
+            <div className="col-sm-3">
+              <button type="button" className="btn btn-success" 
+                      disabled={ this.state.modifyingContract }
+                      onClick={() => this.deployingContract()}>
+                { this.state.modifyingContract ? "Deploying to blockchain..." : "Deploy to blockchain!" }
+              </button>
+            </div>
+            <small>or</small>
+            {this.editContractPanel()}
+          </div>  : null }
         </div> : null }
+
         { this.state.contractAddress ? 
         <div>
           <h6>
