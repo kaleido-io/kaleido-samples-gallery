@@ -184,12 +184,12 @@ class Configure extends Component {
         </div>   */}
         <div className="form-group row">
           <div className="col-sm-6">
-            <button type="button"className="btn btn-success" onClick={() => this.updateLocalStorage()}>
+            <button type="button" className="btn btn-success" onClick={() => this.updateLocalStorage()}>
               Save
             </button>
           </div>
           <div className="col-sm-6">
-            <button type="button"className="btn-sm btn-danger" onClick={() => this.resetLocalStorage()}>
+            <button type="button" className="btn btn-sm btn-danger" onClick={() => this.resetLocalStorage()}>
               Reset all
             </button>
           </div>
