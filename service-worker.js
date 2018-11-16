@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/kaleido-samples-gallery/precache-manifest.cd87ee7d17f72884e760681672ac11b7.js"
+  "/kaleido-samples-gallery/precache-manifest.44bb0ecc6cc56bde42068780e1ea5bbb.js"
 );
 
 workbox.clientsClaim();
