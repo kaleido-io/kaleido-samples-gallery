@@ -317,7 +317,9 @@ class AuditLog extends Component {
                   <div className="form-group row">
                     <label className="col-sm-2 col-form-label">Payload</label>
                     <div className="col-sm-10">
-                      <JSONPretty id="json-pretty" json={this.state.viewPrettyJson} className="form-control-plaintext"></JSONPretty>
+                      <pre style={{backgroundColor:'#F3F2F2'}}>
+                        <JSONPretty style={{marginLeft:'15px'}} id="json-pretty" json={this.state.viewPrettyJson} className="form-control-plaintext"></JSONPretty>
+                      </pre>
                     </div>
                   </div> 
                 </div> : 

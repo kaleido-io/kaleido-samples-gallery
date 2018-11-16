@@ -165,7 +165,7 @@ class OpenLaw extends Component {
 
     return (
       <Container>
-        <Image src={process.env.PUBLIC_URL + '/imgs/top-image.png'} />
+        <Image style={{marginTop:'135px'}} src={process.env.PUBLIC_URL + '/imgs/top-image.png'} />
         <Header as='h1' attached='top'>
           Create New Joint Venture Project 
           <a target='blank' href="https://github.com/kaleido-io/kaleido-samples-gallery/tree/master/docs/openlaw" 

@@ -251,7 +251,7 @@ class Chainlink extends Component {
   sampleJobId = () => {
     return (
       <pre style={{backgroundColor:'#F3F2F2'}}>
-        <JSONPretty id="json-pretty" json={sampleJobSpec} className="form-control-plaintext"></JSONPretty>
+        <JSONPretty style={{marginLeft:'15px'}} id="json-pretty" json={sampleJobSpec} className="form-control-plaintext"></JSONPretty>
       </pre>
     )
   }
@@ -299,7 +299,7 @@ class Chainlink extends Component {
         
         { this.state.showContractSource ?
         <pre style={{backgroundColor:'#F3F2F2'}}><code className='solidity'>
-            {this.state.contractSolidityText}
+            <div style={{marginLeft:'15px'}}>{this.state.contractSolidityText}</div>
         </code></pre>
         : null }
         { this.state.showJobSpec ?
