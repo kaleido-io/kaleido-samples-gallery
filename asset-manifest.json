@@ -1,14 +1,14 @@
 {
-  "main.css": "/kaleido-samples-gallery/static/css/main.2f070f53.chunk.css",
-  "main.js": "/kaleido-samples-gallery/static/js/main.6bf94d27.chunk.js",
-  "main.js.map": "/kaleido-samples-gallery/static/js/main.6bf94d27.chunk.js.map",
-  "static/js/1.01c8e7ca.chunk.js": "/kaleido-samples-gallery/static/js/1.01c8e7ca.chunk.js",
-  "static/js/1.01c8e7ca.chunk.js.map": "/kaleido-samples-gallery/static/js/1.01c8e7ca.chunk.js.map",
+  "main.css": "/kaleido-samples-gallery/static/css/main.2d000f6c.chunk.css",
+  "main.js": "/kaleido-samples-gallery/static/js/main.d1e22ca9.chunk.js",
+  "main.js.map": "/kaleido-samples-gallery/static/js/main.d1e22ca9.chunk.js.map",
+  "static/js/1.41ed54bd.chunk.js": "/kaleido-samples-gallery/static/js/1.41ed54bd.chunk.js",
+  "static/js/1.41ed54bd.chunk.js.map": "/kaleido-samples-gallery/static/js/1.41ed54bd.chunk.js.map",
   "runtime~main.js": "/kaleido-samples-gallery/static/js/runtime~main.38bc574b.js",
   "runtime~main.js.map": "/kaleido-samples-gallery/static/js/runtime~main.38bc574b.js.map",
   "static/media/chainlink-ethprice.sol": "/kaleido-samples-gallery/static/media/chainlink-ethprice.e3252272.sol",
-  "static/css/main.2f070f53.chunk.css.map": "/kaleido-samples-gallery/static/css/main.2f070f53.chunk.css.map",
+  "static/css/main.2d000f6c.chunk.css.map": "/kaleido-samples-gallery/static/css/main.2d000f6c.chunk.css.map",
   "index.html": "/kaleido-samples-gallery/index.html",
-  "precache-manifest.44bb0ecc6cc56bde42068780e1ea5bbb.js": "/kaleido-samples-gallery/precache-manifest.44bb0ecc6cc56bde42068780e1ea5bbb.js",
+  "precache-manifest.e3700730be8a0593547084d41c7924c6.js": "/kaleido-samples-gallery/precache-manifest.e3700730be8a0593547084d41c7924c6.js",
   "service-worker.js": "/kaleido-samples-gallery/service-worker.js"
 }
