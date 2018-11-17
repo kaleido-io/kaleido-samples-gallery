@@ -136,7 +136,7 @@ class IPFS extends Component {
   render() {
     if (this.state.missingConfig) {
       return (
-        <MissingConfig header="IPFS" />
+        <MissingConfig header="IPFS" headerImage="/imgs/ipfs.png" />
       )
     }
     return (

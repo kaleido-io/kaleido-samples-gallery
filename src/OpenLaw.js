@@ -159,7 +159,9 @@ class OpenLaw extends Component {
   render() {
     if (this.state.missingConfig) {
       return (
-        <MissingConfig header="OpenLaw" text="be sure to configure the OpenLaw RPC endpoint along with a valid Openlaw account email & password" />
+        <MissingConfig header="OpenLaw" 
+          headerImage="/imgs/openlaw.jpg"
+          text="be sure to configure the OpenLaw RPC endpoint along with a valid Openlaw account email & password" />
       )
     }
 

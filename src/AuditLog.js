@@ -233,7 +233,7 @@ class AuditLog extends Component {
   render() {
     if (this.state.missingConfig) {
       return (
-        <MissingConfig header="Audit Log" />
+        <MissingConfig header="Audit Log" headerImage="/imgs/blockexplorer.png" />
       )
     }
     const timelinePanel = {

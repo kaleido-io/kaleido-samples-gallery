@@ -43,7 +43,7 @@ h2 {
   font-weight: 900;
 }
 
-.btn-link {
+.btn-link, a {
   color:#3942C1;
 }
 

@@ -274,6 +274,7 @@ class Chainlink extends Component {
       return (
         <MissingConfig 
           header="Chainlink"
+          headerImage="/imgs/chainlink.png"
           text="you can retrieve the values for CHAINLINK API ENDPOINT, LINK_CONTRACT_ADDRESS & ORACLE_CONTRACT_ADDRESS
           from the Chainlink service dashboard where you launch the Chainlink Web UI"
         />

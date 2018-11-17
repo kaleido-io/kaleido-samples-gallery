@@ -139,7 +139,7 @@ class HDwallet extends Component {
   render() {
     if (this.state.missingConfig) {
       return (
-        <MissingConfig header="HDWallet" />
+        <MissingConfig header="HDWallet" headerImage="/imgs/hdwallet.png" />
       )
     }
     return (
