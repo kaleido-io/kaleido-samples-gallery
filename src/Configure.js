@@ -77,7 +77,7 @@ class Configure extends Component {
           All settings saved on this page will be persisted to browser local storage.
         </h5>
         <br />
-        <h5>Shared</h5>
+
         <div className="form-group row">
           <label className="col-sm-3 col-form-label">App credentials username</label>
           <div className="col-sm-4">
@@ -97,7 +97,13 @@ class Configure extends Component {
             <small>(ex: https://zz..-zz..-rpc.us-east-2.kaleido.io)</small>
           </div>
         </div>
-        <h5>HDWallet</h5>
+        <h5 className="smallHeader clearfix">
+          <div className="headerImage">
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+                 src={process.env.PUBLIC_URL + '/imgs/hdwallet.png'} />
+          </div>
+          <div className="headerText">HDWallet</div>
+        </h5>
         <div className="form-group row">
           <label className="col-sm-3 col-form-label">Consortia ID (for block explorer)</label>
           <div className="col-sm-4">
@@ -118,7 +124,13 @@ class Configure extends Component {
             <input type="text" className="form-control col-sm-12" ref={this.hdwalletWalletId} />
           </div>
         </div>
-        <h5>IPFS</h5>
+        <h5 className="smallHeader clearfix">
+          <div className="headerImage">
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+                 src={process.env.PUBLIC_URL + '/imgs/ipfs.png'} />
+          </div>
+          <div className="headerText">IPFS</div>
+        </h5>
         <div className="form-group row">
           <label className="col-sm-3 col-form-label">IPFS API endpoint</label>
           <div className="col-sm-6">
@@ -134,7 +146,13 @@ class Configure extends Component {
             <small>(ex: https://zz..-zz..-idregistry.us-east-2.kaleido.io)</small>
           </div>
         </div> */}
-        <h5>OpenLaw</h5>
+        <h5 className="smallHeader clearfix">
+          <div className="headerImage">
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+                 src={process.env.PUBLIC_URL + '/imgs/openlaw.jpg'} />
+          </div>
+          <div className="headerText">OpenLaw</div>
+        </h5>
         <div className="form-group row">
           <label className="col-sm-3 col-form-label">OpenLaw UI URL</label>
           <div className="col-sm-6">
@@ -154,7 +172,13 @@ class Configure extends Component {
             <input type="password" className="form-control col-sm-12" ref={this.openlawAccountPassword} />
           </div>
         </div>
-        <h5>Chainlink</h5>
+        <h5 className="smallHeader clearfix">
+          <div className="headerImage">
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+                 src={process.env.PUBLIC_URL + '/imgs/chainlink.png'} />
+          </div>
+          <div className="headerText">Chainlink</div>
+        </h5>
         <div className="form-group row">
           <label className="col-sm-3 col-form-label">Chainlink API endpoint</label>
           <div className="col-sm-6">
