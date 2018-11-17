@@ -19,6 +19,8 @@ class App extends Component {
               <div className="col-sm-2"></div>
               <div className="col-sm-2">
                 <img src={process.env.PUBLIC_URL + '/imgs/logo.svg'} className="mk-logo__title"></img>
+                <br />
+                <small style={{color:'white'}}>samples gallery</small>
               </div>
               <div className="col-sm-8">
                 <Link to="/">
