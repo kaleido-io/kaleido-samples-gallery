@@ -9,21 +9,6 @@ class OpenLaw extends Component {
   constructor(props) {
     super(props)
     utils.bindLocalStorage(this)
-
-    this.openLawConfig = {
-      server: utils.buildServiceUrlWithCreds(this, this.openlawRpcEndpoint),
-      templateName: 'NDA DEMO (KALEIDO)',
-      userName: this.openlawAccountEmail,
-      password: this.openlawAccountPassword
-    }
-
-    this.apiClient = new APIClient({
-      root: this.openlawRpcEndpoint,
-      auth: {
-        username: this.appCredsUsername,
-        password: this.appCredsPassword
-      }
-    });
     
     this.state = {
       missingConfig: false,
@@ -56,6 +41,21 @@ class OpenLaw extends Component {
       }))
       return
     }
+
+    this.openLawConfig = {
+      server: utils.buildServiceUrlWithCreds(this, this.openlawRpcEndpoint),
+      templateName: 'NDA DEMO (KALEIDO)',
+      userName: this.openlawAccountEmail,
+      password: this.openlawAccountPassword
+    }
+
+    this.apiClient = new APIClient({
+      root: this.openlawRpcEndpoint,
+      auth: {
+        username: this.appCredsUsername,
+        password: this.appCredsPassword
+      }
+    });
   }
 
   processNDA = async(event) => {
@@ -164,144 +164,153 @@ class OpenLaw extends Component {
     }
 
     return (
-      <Container>
-        <Image style={{marginTop:'135px'}} src={process.env.PUBLIC_URL + '/imgs/top-image.png'} />
-        <Header as='h1' attached='top'>
-          Create New Joint Venture Project 
-          <a target='blank' href="https://github.com/kaleido-io/kaleido-samples-gallery/tree/master/docs/openlaw" 
-             style={{marginLeft: '50px', fontSize: 'small'}}>view instructions
-          </a>
-        </Header>
-        <Segment attached>
-          <Header.Subheader>New land development, farm exploration, or other joint venture projects</Header.Subheader>
-          <Step.Group ordered>
-            <Step completed={this.state.step1Complete} active={this.state.step1Active}>
-              <Step.Content>
-                <Step.Title>Parties</Step.Title>
-                <Step.Description>Project members</Step.Description>
-              </Step.Content>
-            </Step>
-            <Step active={this.state.step2Active}>
-              <Step.Content>
-                <Step.Title>Non Disclosure</Step.Title>
-                <Step.Description>On OpenLaw</Step.Description>
+      <main>
+        <Container>
+          <h2 className="pageHeader clearfix">
+            <div className="headerImage">
+              <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+                  src={process.env.PUBLIC_URL + '/imgs/openlaw.jpg'} />
+            </div>
+            <div className="headerText">Openlaw</div>
+          </h2>
+          <Image src={process.env.PUBLIC_URL + '/imgs/top-image.png'} />
+          <Header as='h1' attached='top'>
+            Create New Joint Venture Project 
+            <a target='blank' href="https://github.com/kaleido-io/kaleido-samples-gallery/tree/master/docs/openlaw" 
+              style={{marginLeft: '50px', fontSize: 'small'}}>view instructions
+            </a>
+          </Header>
+          <Segment attached>
+            <Header.Subheader>New land development, farm exploration, or other joint venture projects</Header.Subheader>
+            <Step.Group ordered>
+              <Step completed={this.state.step1Complete} active={this.state.step1Active}>
+                <Step.Content>
+                  <Step.Title>Parties</Step.Title>
+                  <Step.Description>Project members</Step.Description>
                 </Step.Content>
-            </Step>
-            <Step>
-              <Step.Content>
-                <Step.Title>Scope Project</Step.Title>
-                <Step.Description>Success criteria</Step.Description>
-              </Step.Content>
-            </Step>
-            <Step>
-              <Step.Content>
-                <Step.Title>Budget</Step.Title>
-              </Step.Content>
-            </Step>
-            <Step>
-              <Step.Content>
-                <Step.Title>Finalize</Step.Title>
-                <Step.Description>On OpenLaw</Step.Description>
-              </Step.Content>
-            </Step>
-          </Step.Group>
-          {this.state.step1Active &&
+              </Step>
+              <Step active={this.state.step2Active}>
+                <Step.Content>
+                  <Step.Title>Non Disclosure</Step.Title>
+                  <Step.Description>On OpenLaw</Step.Description>
+                  </Step.Content>
+              </Step>
+              <Step>
+                <Step.Content>
+                  <Step.Title>Scope Project</Step.Title>
+                  <Step.Description>Success criteria</Step.Description>
+                </Step.Content>
+              </Step>
+              <Step>
+                <Step.Content>
+                  <Step.Title>Budget</Step.Title>
+                </Step.Content>
+              </Step>
+              <Step>
+                <Step.Content>
+                  <Step.Title>Finalize</Step.Title>
+                  <Step.Description>On OpenLaw</Step.Description>
+                </Step.Content>
+              </Step>
+            </Step.Group>
+            {this.state.step1Active &&
+              <Segment>
+                <Form loading={this.state.formLoading} error={!!this.state.errorMessage}
+                  success={!!this.state.successMessage} onSubmit={this.processNDA}>
+                  <Grid columns={2} divided>
+                    <Grid.Row columns={1}>
+                      <Message error header='Error' content={this.state.errorMessage} />
+                      <Message success header='Success' content={this.state.successMessage} />
+                    </Grid.Row>
+                    <Grid.Row style={{marginLeft:'0px'}}>
+                      <Grid.Column>
+                        <Header as="h4">First Participant</Header>
+                          <Form.Input label="Company Name"
+                            type="text" placeholder="Corporate name"
+                            onChange={event => this.setState({partyA: event.target.value})} />
+                          <Form.Input label="Officer"
+                            type="text" placeholder="First and last name"
+                            onChange={event => this.setState({partyAOfficer: event.target.value})} />
+                          <Form.Input label="Title"
+                            type="text" placeholder="Officer's title (e.g., COO)"
+                            onChange={event => this.setState({partyAOfficerTitle: event.target.value})} />
+                          <Form.Input label="Email"
+                            type="text" placeholder="Email address where signature form should be sent"
+                            onChange={event => this.setState({partyAEmail: event.target.value})} />
+                      </Grid.Column>
+                      <Grid.Column>
+                        <Header as="h4">Second Participant</Header>
+                          <Form.Input label="Company Name"
+                            type="text" placeholder="Corporate name"
+                            onChange={event => this.setState({partyB: event.target.value})} />
+                          <Form.Input label="Officer"
+                            type="text" placeholder="First and last name"
+                            onChange={event => this.setState({partyBOfficer: event.target.value})} />
+                          <Form.Input label="Title"
+                            type="text" placeholder="Officer's title (e.g., COO)"
+                            onChange={event => this.setState({partyBOfficerTitle: event.target.value})} />
+                          <Form.Input label="Email"
+                            type="text" placeholder="Email address where signature form should be sent"
+                            onChange={event => this.setState({partyBEmail: event.target.value})} />
+                      </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row columns={1} style={{marginLeft:'0px'}}>
+                      <Grid.Column>
+                        <Form.Field inline>
+                          <label>How long do you want the non-disclosure agreement ("NDA") to continue after disclosures?</label>
+                          <Input placeholder='years' onChange={event => this.setState({ndaLength: event.target.value})} />
+                        </Form.Field>
+                      </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row columns={1}>
+                      <Grid.Column textAlign="right">
+                        <Button type={"submit"} primary>Go To Non-Disclosure Agreeement</Button>
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
+                </Form>
+              </Segment>
+            }
+            {this.state.step2Active &&
+              <Segment>
+                <Header>Preview</Header>
+                <Form onSubmit={this.uploadNDA} loading={this.state.formLoading} error={!!this.state.errorMessage}
+                  success={!!this.state.successMessage}>
+                  <Grid>
+                    <Grid.Row columns={1}>
+                      <Grid.Column textAlign="right">
+                        <Button primary size="large">Begin Signature Process</Button>
+                      </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row columns={1}>
+                      <Grid.Column>
+                        <div className="ndaPreview" dangerouslySetInnerHTML={{__html: this.state.ndaPreviewText}} />
+                      </Grid.Column>
+                      <Grid.Column>&nbsp;</Grid.Column>
+                    </Grid.Row>
+                  </Grid>
+                </Form>
+                <Modal open={this.state.ndaModalOpen} closeIcon>
+                  <Modal.Header>Non-Disclosure Agreement</Modal.Header>
+                  <Modal.Content image >
+                    <Image src={process.env.PUBLIC_URL + '/imgs/openlaw-300.png'} wrapped size="small" />
+                    <Modal.Description>
+                      <p>You will now be redirected to OpenLaw where both parties will execute the NDA. Evidence of the agreement
+                        will be stored on the blockchain.</p>
+                      <Button primary onClick={this.navigateToNda}>Sign NDA On OpenLaw</Button>
+                      <Button style={{marginLeft: '50px'}} default onClick={this.refreshPage}>close & conclude demo</Button>
+                    </Modal.Description>
+                  </Modal.Content>
+                </Modal>
+              </Segment>
+            }
             <Segment>
-              <Form loading={this.state.formLoading} error={!!this.state.errorMessage}
-                success={!!this.state.successMessage} onSubmit={this.processNDA}>
-                <Grid columns={2} divided>
-                  <Grid.Row columns={1}>
-                    <Message error header='Error' content={this.state.errorMessage} />
-                    <Message success header='Success' content={this.state.successMessage} />
-                  </Grid.Row>
-                  <Grid.Row style={{marginLeft:'0px'}}>
-                    <Grid.Column>
-                      <Header as="h4">First Participant</Header>
-                        <Form.Input label="Company Name"
-                          type="text" placeholder="Corporate name"
-                          onChange={event => this.setState({partyA: event.target.value})} />
-                        <Form.Input label="Officer"
-                          type="text" placeholder="First and last name"
-                          onChange={event => this.setState({partyAOfficer: event.target.value})} />
-                        <Form.Input label="Title"
-                          type="text" placeholder="Officer's title (e.g., COO)"
-                          onChange={event => this.setState({partyAOfficerTitle: event.target.value})} />
-                        <Form.Input label="Email"
-                          type="text" placeholder="Email address where signature form should be sent"
-                          onChange={event => this.setState({partyAEmail: event.target.value})} />
-                    </Grid.Column>
-                    <Grid.Column>
-                      <Header as="h4">Second Participant</Header>
-                        <Form.Input label="Company Name"
-                          type="text" placeholder="Corporate name"
-                          onChange={event => this.setState({partyB: event.target.value})} />
-                        <Form.Input label="Officer"
-                          type="text" placeholder="First and last name"
-                          onChange={event => this.setState({partyBOfficer: event.target.value})} />
-                        <Form.Input label="Title"
-                          type="text" placeholder="Officer's title (e.g., COO)"
-                          onChange={event => this.setState({partyBOfficerTitle: event.target.value})} />
-                        <Form.Input label="Email"
-                          type="text" placeholder="Email address where signature form should be sent"
-                          onChange={event => this.setState({partyBEmail: event.target.value})} />
-                    </Grid.Column>
-                  </Grid.Row>
-                  <Grid.Row columns={1} style={{marginLeft:'0px'}}>
-                    <Grid.Column>
-                      <Form.Field inline>
-                        <label>How long do you want the non-disclosure agreement ("NDA") to continue after disclosures?</label>
-                        <Input placeholder='years' onChange={event => this.setState({ndaLength: event.target.value})} />
-                      </Form.Field>
-                    </Grid.Column>
-                  </Grid.Row>
-                  <Grid.Row columns={1}>
-                    <Grid.Column textAlign="right">
-                      <Button type={"submit"} primary>Go To Non-Disclosure Agreeement</Button>
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              </Form>
+              <p>Agriculture Network is a demonstration project by <strong><a href="http://openlaw.io">OpenLaw </a></strong>
+                and <strong><a href="https://kaleido.io">Kaleido</a></strong>.</p>
             </Segment>
-          }
-          {this.state.step2Active &&
-            <Segment>
-              <Header>Preview</Header>
-              <Form onSubmit={this.uploadNDA} loading={this.state.formLoading} error={!!this.state.errorMessage}
-                success={!!this.state.successMessage}>
-                <Grid>
-                  <Grid.Row columns={1}>
-                    <Grid.Column textAlign="right">
-                      <Button primary size="large">Begin Signature Process</Button>
-                    </Grid.Column>
-                  </Grid.Row>
-                  <Grid.Row columns={1}>
-                    <Grid.Column>
-                      <div className="ndaPreview" dangerouslySetInnerHTML={{__html: this.state.ndaPreviewText}} />
-                    </Grid.Column>
-                    <Grid.Column>&nbsp;</Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              </Form>
-              <Modal open={this.state.ndaModalOpen} closeIcon>
-                <Modal.Header>Non-Disclosure Agreement</Modal.Header>
-                <Modal.Content image >
-                  <Image src={process.env.PUBLIC_URL + '/imgs/openlaw-300.png'} wrapped size="small" />
-                  <Modal.Description>
-                    <p>You will now be redirected to OpenLaw where both parties will execute the NDA. Evidence of the agreement
-                      will be stored on the blockchain.</p>
-                    <Button primary onClick={this.navigateToNda}>Sign NDA On OpenLaw</Button>
-                    <Button style={{marginLeft: '50px'}} default onClick={this.refreshPage}>close & conclude demo</Button>
-                  </Modal.Description>
-                </Modal.Content>
-              </Modal>
-            </Segment>
-          }
-          <Segment>
-            <p>Agriculture Network is a demonstration project by <strong><a href="http://openlaw.io">OpenLaw </a></strong>
-              and <strong><a href="https://kaleido.io">Kaleido</a></strong>.</p>
           </Segment>
-        </Segment>
-      </Container>
+        </Container>
+      </main>
     );
   }
 

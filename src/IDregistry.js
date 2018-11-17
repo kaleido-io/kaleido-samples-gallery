@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import utils from './utils'
 import MissingConfig from './Shared'
+import './App.css';
 
 class IDregistry extends Component {
   constructor(props) {

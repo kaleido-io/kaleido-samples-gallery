@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 // import { PrimaryButton } from '@photic/design-kit';
 
 class Configure extends Component {
@@ -63,7 +64,13 @@ class Configure extends Component {
   render() {
     return (
       <main className="container">
-        <h2>Configure</h2>
+        <h2 className="pageHeader clearfix">
+          <div className="headerImage">
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+                src={process.env.PUBLIC_URL + '/imgs/ethconnect.png'} />
+          </div>
+          <div className="headerText">Configure</div>
+        </h2>
         <h5>
           Welcome to the Kaleido samples gallery! In order for the samples to connect to your 
           Kaleido environment, you will need to provide the configuration settings below.
@@ -99,7 +106,7 @@ class Configure extends Component {
           </div>
         </div>
         <div className="form-group row">
-          <label className="col-sm-3 col-form-label">HDWallet RPC endpoint</label>
+          <label className="col-sm-3 col-form-label">HDWallet API endpoint</label>
           <div className="col-sm-6">
             <input type="text" className="form-control col-sm-12" ref={this.hdwalletRpcEndpoint} />
             <small>(ex: https://zz..-zz..-hdwallet.us-east-2.kaleido.io)</small>
@@ -113,10 +120,10 @@ class Configure extends Component {
         </div>
         <h5>IPFS</h5>
         <div className="form-group row">
-          <label className="col-sm-3 col-form-label">IPFS RPC endpoint</label>
+          <label className="col-sm-3 col-form-label">IPFS API endpoint</label>
           <div className="col-sm-6">
             <input type="text" className="form-control col-sm-12" ref={this.ipfsRpcEndpoint} />
-            <small>(ex: https://zz..-zz..-ipfs.us-east-2.kaleido.io)</small>
+            <small>(ex: https://zz..-zz..-ipfs.us-east-2.kaleido.io/api)</small>
           </div>
         </div>
         {/* <h5>ID Registry</h5>
@@ -129,7 +136,7 @@ class Configure extends Component {
         </div> */}
         <h5>OpenLaw</h5>
         <div className="form-group row">
-          <label className="col-sm-3 col-form-label">OpenLaw RPC endpoint</label>
+          <label className="col-sm-3 col-form-label">OpenLaw UI URL</label>
           <div className="col-sm-6">
             <input type="text" className="form-control col-sm-12" ref={this.openlawRpcEndpoint} />
             <small>(ex: https://zz..-zz..-openlaw.us-east-2.kaleido.io)</small>
@@ -196,7 +203,6 @@ class Configure extends Component {
             </button>
           </div>
         </div>
-        <br /><br /><br />
       </main>
     );
   }

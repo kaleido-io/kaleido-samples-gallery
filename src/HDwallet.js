@@ -3,6 +3,7 @@ import contractJson from './contracts/hdwallet.json'
 // import { sha256 } from 'js-sha256'
 import utils from './utils'
 import MissingConfig from './Shared'
+import './App.css';
 
 class HDwallet extends Component {
   constructor(props) {
@@ -143,7 +144,13 @@ class HDwallet extends Component {
     }
     return (
       <main className="container">
-        <h2>HDWallet</h2>
+        <h2 className="pageHeader clearfix">
+          <div className="headerImage">
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+                src={process.env.PUBLIC_URL + '/imgs/hdwallet.png'} />
+          </div>
+          <div className="headerText">HDWallet</div>
+        </h2>
         <h5>
           The purpose of this sample is to show how you can anonymously submit a transaction to the blockchain. We will deploy a 
           simple smart contract which stores and exposes a single value. 

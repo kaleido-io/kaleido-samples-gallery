@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import contractJson from './contracts/ipfs.json'
 import utils from './utils'
 import MissingConfig from './Shared'
+import './App.css';
 
 class IPFS extends Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class IPFS extends Component {
       headers.append('Accept', 'application/json, text/plain, */*',)  
       const formData = new FormData()
       formData.append('blob', this.state.selectedFile)
-      fetch(`${this.ipfsRpcEndpoint}/api/v0/add`, {
+      fetch(`${this.ipfsRpcEndpoint}/v0/add`, {
         method: 'POST',
         headers: headers,
         body: formData
@@ -61,7 +62,7 @@ class IPFS extends Component {
       .then(r => r.json())
       .then(data => {
         console.log(data)
-        let ipfsLink = utils.buildServiceUrlWithCreds(this, `${this.ipfsRpcEndpoint}/api/v0`)
+        let ipfsLink = utils.buildServiceUrlWithCreds(this, `${this.ipfsRpcEndpoint}/v0`)
         this.setState(() => ({
           ipfsHash: data.Hash,
           ipfsLink: `${ipfsLink}/cat/${data.Hash}`,
@@ -125,7 +126,7 @@ class IPFS extends Component {
     var headers = new Headers();
     headers.append('Authorization', 'Basic ' + btoa(this.appCredsUsername + ':' + this.appCredsPassword));
     headers.append('Accept', 'application/json, text/plain, */*',)
-    let url = `${this.ipfsRpcEndpoint}/api/v0/get/${this.state.ipfsHash}`
+    let url = `${this.ipfsRpcEndpoint}/v0/get/${this.state.ipfsHash}`
     fetch(url, {
       method: 'GET',
       headers: headers
@@ -140,7 +141,13 @@ class IPFS extends Component {
     }
     return (
       <main className="container">
-        <h2>IPFS</h2>
+        <h2 className="pageHeader clearfix">
+          <div className="headerImage">
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+                src={process.env.PUBLIC_URL + '/imgs/ipfs.png'} />
+          </div>
+          <div className="headerText">IPFS</div>
+        </h2>
         <h5>
           The purpose of this sample is to show how you can add a file to IPFS, and then store a 
           description of the file along with the IPFS content hash in a blockchain smart contract. 
@@ -153,7 +160,7 @@ class IPFS extends Component {
         </h6>
         <div className="form-group row">
           <label className="col-sm-2 col-form-label">Upload a file</label>
-          <div className="col-sm-3">
+          <div className="col-sm-5">
             <input disabled={this.state.uploadedFile} type="file" 
                    onChange={this.fileChangedHandler}
                    ref={this.fileRef} />

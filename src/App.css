@@ -7,7 +7,7 @@
   text-indent: -9999em; }
 
 .samplesHeader {
-  background: #3842C1;
+  background: #3942C1;
   padding: 30px 0;
   position: fixed;
   top:0;
@@ -34,9 +34,62 @@
 }
 
 h2 {
-  color: #3842C1;
+  color: #3942C1;
   font-weight: 400;
   font-size: 2.4rem;
+}
+
+.btn {
+  font-weight: 900;
+}
+
+.btn-link {
+  color:#3942C1;
+}
+
+.btn-success {
+  background-color:#03CC79;
+  border-color:#03CC79;
+}
+.btn-success:hover, .btn-success:disabled {
+  background-color:#67e0ae;
+  border-color:#67e0ae;
+}
+.btn-success:not(:disabled):not(.disabled):active:focus {
+  background-color:#67e0ae;
+  border-color:#67e0ae;
+  box-shadow: 0 0 0 0.2rem #67e0ae;
+}
+
+.btn-warning {
+  color: white;
+  background-color:#FA9A43; 
+  border-color:#FA9A43; 
+}
+.btn-warning:hover, .btn-warning:disabled {
+  color: white;
+  background-color:#FCCCA1;
+  border-color:#FCCCA1;
+}
+.btn-warning:not(:disabled):not(.disabled):active:focus {
+  color: white;
+  background-color:#FCCCA1;
+  border-color:#FCCCA1;
+  box-shadow: 0 0 0 0.2rem #FCCCA1;
+}
+
+.btn-primary {
+  background-color:#3942C1;
+  border-color: #3942C1;
+}
+.btn-primary:hover, .btn-primary:disabled {
+  background-color:#858bdb;
+  border-color:#858bdb;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+  background-color:#858bdb;
+  border-color:#858bdb;
+  box-shadow: 0 0 0 0.2rem #858bdb;
 }
 
 .samplesHeader button:hover {
@@ -45,12 +98,23 @@ h2 {
 
 main {
   margin-top: 110px;
+  margin-bottom: 100px;
 }
 
 body * {
   font-family: "Lato", sans-serif;
   font-weight: 300;
   line-height: 1.4em; }
+
+.pageHeader .headerImage {
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+
+.pageHeader .headerText {
+  padding-top: 22px;
+}
 
 .ndaPreview ul {
   list-style: none;
@@ -72,8 +136,8 @@ body * {
   height: 46px;
   margin: 1px;
   border-radius: 50%;
-  border: 5px solid #cef;
-  border-color: #cef transparent #cef transparent;
+  border: 5px solid #3942C1;
+  border-color: #3942C1 transparent #3942C1 transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {

@@ -4,6 +4,7 @@ import utils from './utils'
 import { Timeline, TimelineBlip } from 'react-event-timeline'
 import JSONPretty from 'react-json-pretty';
 import MissingConfig from './Shared'
+import './App.css';
 
 class AuditLog extends Component {
   constructor(props) {
@@ -131,7 +132,7 @@ class AuditLog extends Component {
   renderTimelines() {
     let records = [], max = 100
     for (let i = this.state.auditRecordCount - 1; i >= 0 && max > 0; i--, max--) {
-      let color = i % 2 === 0 ? "#03a9f4" : "#6fba1c"
+      let color = i % 2 === 0 ? "#03CC79" : "#3942C1"
       records.push(
         <div key={i+1} style={{cursor: 'pointer'}} onClick={() => this.fetchRecord(i)}>
           <TimelineBlip title={`#${i+1}`} iconColor={color}/>
@@ -242,7 +243,13 @@ class AuditLog extends Component {
     }
     return (
       <main className="container">
-        <h2>Audit Log</h2>
+        <h2 className="pageHeader clearfix">
+          <div className="headerImage">
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+                src={process.env.PUBLIC_URL + '/imgs/blockexplorer.png'} />
+          </div>
+          <div className="headerText">Audit Log</div>
+        </h2>
         <h5>
           The purpose of this sample is to show how you can use a simple smart contract as an audit log to view records
           as they're submitted over time.

@@ -155,7 +155,7 @@ class Chainlink extends Component {
   renderTimelines() {
     let records = [], max = 100
     for (let i = this.state.priceHistoryCount - 1; i >= 0 && max > 0; i--, max--) {
-      let color = i % 2 === 0 ? "#03a9f4" : "#6fba1c"
+      let color = i % 2 === 0 ? "#03CC79" : "#3942C1"
       records.push(
         <div key={i+1} style={{cursor: 'pointer'}} onClick={() => this.fetchRecord(i)}>
           <TimelineBlip title={`#${i+1}`} iconColor={color}/>
@@ -286,7 +286,13 @@ class Chainlink extends Component {
     }
     return (
       <main className="container">
-        <h2>Chainlink</h2>
+        <h2 className="pageHeader clearfix">
+          <div className="headerImage">
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+                 src={process.env.PUBLIC_URL + '/imgs/chainlink.png'} />
+          </div>
+          <div className="headerText">Chainlink</div>
+        </h2>
         <h5>
           This sample deploys and exercises the following example Chainlink contract,
           which queries the current price of Ether via the Chainlink Oracle
