@@ -8,7 +8,7 @@ function MissingConfig(props) {
       <div className="container">
         <h2 className="pageHeader clearfix">
           <div className="headerImage">
-            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} alt=""
                 src={process.env.PUBLIC_URL + props.headerImage} />
           </div>
           <div className="headerText">{props.header}</div>

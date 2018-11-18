@@ -143,7 +143,7 @@ class IPFS extends Component {
       <main className="container">
         <h2 className="pageHeader clearfix">
           <div className="headerImage">
-            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} alt=""
                 src={process.env.PUBLIC_URL + '/imgs/ipfs.png'} />
           </div>
           <div className="headerText">IPFS</div>

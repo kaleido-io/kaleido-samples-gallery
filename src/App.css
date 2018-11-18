@@ -35,7 +35,6 @@
 
 h2 {
   color: #3942C1;
-  font-weight: 400;
   font-size: 2.4rem;
 }
 
@@ -114,6 +113,7 @@ body * {
 
 .pageHeader .headerText {
   padding-top: 22px;
+  font-weight: 400;
 }
 
 .smallHeader .headerImage {
@@ -124,6 +124,20 @@ body * {
 
 .smallHeader .headerText {
   padding-top: 12px;
+  color: #3942C1;
+  font-weight: 500;
+}
+
+.configureSection{
+  padding:10px;
+  border: solid 1px;
+  border-color: #F5F5F5;
+}
+
+.configureSection:hover{
+  border: solid 1px;
+  border-color: #D8D8D8;
+  background: #F5F5F5;
 }
 
 .ndaPreview ul {

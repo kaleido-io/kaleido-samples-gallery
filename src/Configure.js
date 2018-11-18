@@ -66,7 +66,7 @@ class Configure extends Component {
       <main className="container">
         <h2 className="pageHeader clearfix">
           <div className="headerImage">
-            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
+            <img style={{maxWidth: '100%', maxHeight: '100%'}} alt=""
                 src={process.env.PUBLIC_URL + '/imgs/ethconnect.png'} />
           </div>
           <div className="headerText">Configure</div>
@@ -77,154 +77,173 @@ class Configure extends Component {
           All settings saved on this page will be persisted to browser local storage.
         </h5>
         <br />
+        
+        <div className="row">
+          <div className="col-sm-10">
+            <div className="">
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">App credentials username</label>
+                <div className="col-sm-6">
+                  <input type="text" className="form-control col-sm-12" ref={this.appCredsUsername} />
+                </div>
+              </div>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">App credentials password</label>
+                <div className="col-sm-8">
+                  <input type="password" className="form-control col-sm-12" ref={this.appCredsPassword} />
+                </div>
+              </div>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">Node RPC endpoint</label>
+                <div className="col-sm-8">
+                  <input type="text" className="form-control col-sm-12" ref={this.nodeRpcEndpoint} />
+                  <small>(ex: https://zz..-zz..-rpc.us-east-2.kaleido.io)</small>
+                </div>
+              </div>
+            </div>
+            
+            <div className="configureSection">
+              <h5 className="smallHeader clearfix">
+                <div className="headerImage">
+                  <img style={{maxWidth: '100%', maxHeight: '100%'}} alt=""
+                      src={process.env.PUBLIC_URL + '/imgs/hdwallet.png'} />
+                </div>
+                <div className="headerText">HDWallet</div>
+              </h5>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">Consortia ID (for block explorer)</label>
+                <div className="col-sm-6">
+                  <input type="text" className="form-control col-sm-12" ref={this.consortiaId} />
+                  <small>(ex: zzabcd1234)</small>
+                </div>
+              </div>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">HDWallet API endpoint</label>
+                <div className="col-sm-8">
+                  <input type="text" className="form-control col-sm-12" ref={this.hdwalletRpcEndpoint} />
+                  <small>(ex: https://zz..-zz..-hdwallet.us-east-2.kaleido.io)</small>
+                </div>
+              </div>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">HDWallet wallet ID</label>
+                <div className="col-sm-6">
+                  <input type="text" className="form-control col-sm-12" ref={this.hdwalletWalletId} />
+                </div>
+              </div>
+            </div>        
+          
+            <div className="configureSection">
+              <h5 className="smallHeader clearfix">
+                <div className="headerImage">
+                  <img style={{maxWidth: '100%', maxHeight: '100%'}} alt=""
+                      src={process.env.PUBLIC_URL + '/imgs/ipfs.png'} />
+                </div>
+                <div className="headerText">IPFS</div>
+              </h5>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">IPFS API endpoint</label>
+                <div className="col-sm-8">
+                  <input type="text" className="form-control col-sm-12" ref={this.ipfsRpcEndpoint} />
+                  <small>(ex: https://zz..-zz..-ipfs.us-east-2.kaleido.io/api)</small>
+                </div>
+              </div>
+            </div>
+              {/* <h5>ID Registry</h5>
+              <div className="form-group row">
+                <label className="col-sm-2 col-form-label">ID Registry RPC endpoint</label>
+                <div className="col-sm-6">
+                  <input type="text" className="form-control col-sm-12" ref={this.idRegistryRpcEndpoint} />
+                  <small>(ex: https://zz..-zz..-idregistry.us-east-2.kaleido.io)</small>
+                </div>
+              </div> */}
 
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">App credentials username</label>
-          <div className="col-sm-4">
-            <input type="text" className="form-control col-sm-12" ref={this.appCredsUsername} />
+            <div className="configureSection">
+              <h5 className="smallHeader clearfix">
+                <div className="headerImage">
+                  <img style={{maxWidth: '100%', maxHeight: '100%'}} alt=""
+                      src={process.env.PUBLIC_URL + '/imgs/openlaw.jpg'} />
+                </div>
+                <div className="headerText">OpenLaw</div>
+              </h5>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">OpenLaw UI URL</label>
+                <div className="col-sm-8">
+                  <input type="text" className="form-control col-sm-12" ref={this.openlawRpcEndpoint} />
+                  <small>(ex: https://zz..-zz..-openlaw.us-east-2.kaleido.io)</small>
+                </div>
+              </div>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">OpenLaw account email</label>
+                <div className="col-sm-8">
+                  <input type="text" className="form-control col-sm-12" ref={this.openlawAccountEmail} />
+                </div>
+              </div>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">OpenLaw account password</label>
+                <div className="col-sm-8">
+                  <input type="password" className="form-control col-sm-12" ref={this.openlawAccountPassword} />
+                </div>
+              </div>
+            </div>
+            <div className="configureSection">
+              <h5 className="smallHeader clearfix">
+                <div className="headerImage">
+                  <img style={{maxWidth: '100%', maxHeight: '100%'}} alt=""
+                      src={process.env.PUBLIC_URL + '/imgs/chainlink.png'} />
+                </div>
+                <div className="headerText">Chainlink</div>
+              </h5>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">Chainlink API endpoint</label>
+                <div className="col-sm-8">
+                  <input type="text" className="form-control col-sm-12" ref={this.chainlinkApiEndpoint} />
+                  <small>(ex: https://zz..-zz..-chainlink.dev-svcs.photic.io)</small>
+                </div>
+              </div>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">Link Contract Address</label>
+                <div className="col-sm-8">
+                  <input type="text" className="form-control col-sm-12" ref={this.chainlinkLinkAddr} />
+                  <small>(ex: 0x145e7Aa18A4A5874c92eb177972173320F217c19)</small>
+                </div>
+              </div>        
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">Oracle Contract Address</label>
+                <div className="col-sm-8">
+                  <input type="text" className="form-control col-sm-12" ref={this.chainlinkOracleAddr} />
+                  <small>(ex: 0xb4acb933676c0a76d9bb5f10791cb6d82c71f19d)</small>
+                </div>
+              </div>  
+              {/* <div className="form-group row">
+                <label className="col-sm-3 col-form-label">Chainlink username/email</label>
+                <div className="col-sm-6">
+                  <input type="text" className="form-control col-sm-12" ref={this.chainlinkEmail} />
+                  <small>(ex: 992ad8782cf38f7e@5e1be1892c901e94.com)</small>
+                </div>
+              </div>  
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">Chainlink password</label>
+                <div className="col-sm-6">
+                  <input type="text" className="form-control col-sm-12" ref={this.chainlinkPassword} />
+                  <small>(ex: 552d08dffd651499)</small>
+                </div>
+              </div>     */}
+            </div>
           </div>
-        </div>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">App credentials password</label>
-          <div className="col-sm-6">
-            <input type="password" className="form-control col-sm-12" ref={this.appCredsPassword} />
-          </div>
-        </div>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Node RPC endpoint</label>
-          <div className="col-sm-6">
-            <input type="text" className="form-control col-sm-12" ref={this.nodeRpcEndpoint} />
-            <small>(ex: https://zz..-zz..-rpc.us-east-2.kaleido.io)</small>
-          </div>
-        </div>
-        <h5 className="smallHeader clearfix">
-          <div className="headerImage">
-            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
-                 src={process.env.PUBLIC_URL + '/imgs/hdwallet.png'} />
-          </div>
-          <div className="headerText">HDWallet</div>
-        </h5>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Consortia ID (for block explorer)</label>
-          <div className="col-sm-4">
-            <input type="text" className="form-control col-sm-12" ref={this.consortiaId} />
-            <small>(ex: zzabcd1234)</small>
-          </div>
-        </div>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">HDWallet API endpoint</label>
-          <div className="col-sm-6">
-            <input type="text" className="form-control col-sm-12" ref={this.hdwalletRpcEndpoint} />
-            <small>(ex: https://zz..-zz..-hdwallet.us-east-2.kaleido.io)</small>
-          </div>
-        </div>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">HDWallet wallet ID</label>
-          <div className="col-sm-4">
-            <input type="text" className="form-control col-sm-12" ref={this.hdwalletWalletId} />
-          </div>
-        </div>
-        <h5 className="smallHeader clearfix">
-          <div className="headerImage">
-            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
-                 src={process.env.PUBLIC_URL + '/imgs/ipfs.png'} />
-          </div>
-          <div className="headerText">IPFS</div>
-        </h5>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">IPFS API endpoint</label>
-          <div className="col-sm-6">
-            <input type="text" className="form-control col-sm-12" ref={this.ipfsRpcEndpoint} />
-            <small>(ex: https://zz..-zz..-ipfs.us-east-2.kaleido.io/api)</small>
-          </div>
-        </div>
-        {/* <h5>ID Registry</h5>
-        <div className="form-group row">
-          <label className="col-sm-2 col-form-label">ID Registry RPC endpoint</label>
-          <div className="col-sm-6">
-            <input type="text" className="form-control col-sm-12" ref={this.idRegistryRpcEndpoint} />
-            <small>(ex: https://zz..-zz..-idregistry.us-east-2.kaleido.io)</small>
-          </div>
-        </div> */}
-        <h5 className="smallHeader clearfix">
-          <div className="headerImage">
-            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
-                 src={process.env.PUBLIC_URL + '/imgs/openlaw.jpg'} />
-          </div>
-          <div className="headerText">OpenLaw</div>
-        </h5>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">OpenLaw UI URL</label>
-          <div className="col-sm-6">
-            <input type="text" className="form-control col-sm-12" ref={this.openlawRpcEndpoint} />
-            <small>(ex: https://zz..-zz..-openlaw.us-east-2.kaleido.io)</small>
-          </div>
-        </div>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">OpenLaw account email</label>
-          <div className="col-sm-6">
-            <input type="text" className="form-control col-sm-12" ref={this.openlawAccountEmail} />
-          </div>
-        </div>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">OpenLaw account password</label>
-          <div className="col-sm-6">
-            <input type="password" className="form-control col-sm-12" ref={this.openlawAccountPassword} />
-          </div>
-        </div>
-        <h5 className="smallHeader clearfix">
-          <div className="headerImage">
-            <img style={{maxWidth: '100%', maxHeight: '100%'}} 
-                 src={process.env.PUBLIC_URL + '/imgs/chainlink.png'} />
-          </div>
-          <div className="headerText">Chainlink</div>
-        </h5>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Chainlink API endpoint</label>
-          <div className="col-sm-6">
-            <input type="text" className="form-control col-sm-12" ref={this.chainlinkApiEndpoint} />
-            <small>(ex: https://zz..-zz..-chainlink.dev-svcs.photic.io)</small>
-          </div>
-        </div>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Link Contract Address</label>
-          <div className="col-sm-6">
-            <input type="text" className="form-control col-sm-12" ref={this.chainlinkLinkAddr} />
-            <small>(ex: 0x145e7Aa18A4A5874c92eb177972173320F217c19)</small>
-          </div>
-        </div>        
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Oracle Contract Address</label>
-          <div className="col-sm-6">
-            <input type="text" className="form-control col-sm-12" ref={this.chainlinkOracleAddr} />
-            <small>(ex: 0xb4acb933676c0a76d9bb5f10791cb6d82c71f19d)</small>
-          </div>
-        </div>        
-        {/* <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Chainlink username/email</label>
-          <div className="col-sm-6">
-            <input type="text" className="form-control col-sm-12" ref={this.chainlinkEmail} />
-            <small>(ex: 992ad8782cf38f7e@5e1be1892c901e94.com)</small>
-          </div>
-        </div>  
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Chainlink password</label>
-          <div className="col-sm-6">
-            <input type="text" className="form-control col-sm-12" ref={this.chainlinkPassword} />
-            <small>(ex: 552d08dffd651499)</small>
-          </div>
-        </div>   */}
-        <div className="form-group row">
-          <div className="col-sm-3"></div>
-          <div className="col-sm-2">
-            <button type="button" className="btn btn-success" onClick={() => this.updateLocalStorage()}>
-              Save
-            </button>
-          </div>
-          <div className="col-sm-2">
-            <button type="button" className="btn btn-sm btn-warning" onClick={() => this.resetLocalStorage()}>
-              Reset all
-            </button>
+          <div className="col-sm-2" style={{position:'relative'}}>
+            <div className="form-group row">
+              <button type="button" className="btn btn-success" onClick={() => this.updateLocalStorage()}
+                      style={{position:'fixed'}}>
+                Save
+              </button>
+            </div>
+            <br /><br /><br />
+            <div className="form-group row">
+              <button type="button" className="btn btn-sm btn-warning" onClick={() => this.resetLocalStorage()}
+                      style={{position:'fixed'}}>
+                Reset all
+              </button>
+            </div>
           </div>
         </div>
       </main>
