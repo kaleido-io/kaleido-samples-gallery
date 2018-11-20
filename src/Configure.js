@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-// import { PrimaryButton } from '@photic/design-kit';
 
 class Configure extends Component {
   constructor(props) {
@@ -233,13 +232,13 @@ class Configure extends Component {
           <div className="col-sm-2">
             <div className="sticky-top" style={{top: '130px'}}>
               <div className="form-group row">
-                <button type="button" className="btn btn-success" onClick={() => this.updateLocalStorage()}>
+                <button style={{minWidth:'80px'}} type="button" className="btn btn-success" onClick={() => this.updateLocalStorage()}>
                   Save
                 </button>
               </div>
               <br /><br /><br />
               <div className="form-group row">
-                <button type="button" className="btn btn-sm btn-warning" onClick={() => this.resetLocalStorage()}>
+                <button style={{minWidth:'80px'}} type="button" className="btn btn-sm btn-warning" onClick={() => this.resetLocalStorage()}>
                   Reset all
                 </button>
               </div>

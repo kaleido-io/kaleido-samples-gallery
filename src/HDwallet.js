@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import contractJson from './contracts/hdwallet.json'
-// import { sha256 } from 'js-sha256'
 import utils from './utils'
 import MissingConfig from './Shared'
 import './App.css';
