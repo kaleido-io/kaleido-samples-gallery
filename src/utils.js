@@ -50,8 +50,9 @@ const utils = {
   },
 
   buildServiceUrlWithCreds(t, serviceRpcEndpoint, useWebsocket = false) {
-    let prefix = serviceRpcEndpoint.startsWith('http://') ? 'http://' : 'https://'
-    let protocol = useWebsocket ? "wss://" : prefix
+    let isHttpOnly = serviceRpcEndpoint.startsWith('http://') ? true : false;
+    let prefix = isHttpOnly ? 'http://' : 'https://'
+    let protocol = useWebsocket ? (isHttpOnly ? "ws://" : "wss://") : prefix
     let endpoint = serviceRpcEndpoint.replace(prefix, '')
     if (useWebsocket) endpoint = endpoint.replace('-rpc.', '-wss.')
     return `${protocol}${t.appCredsUsername}:${t.appCredsPassword}@${endpoint}`
