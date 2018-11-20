@@ -68,8 +68,17 @@ class OpenLaw extends Component {
       console.log(ndaTemplate);
 
       const partyAOLUser = await this.apiClient.getUserDetails(this.state.partyAEmail);
-      console.log("partyAOLUser", partyAOLUser);
+      if (Object.keys(partyAOLUser).length === 0) {
+        throw ("No OpenLaw account exists with First Participant's email. You must create an OpenLaw account with this email.")
+      } else {
+        console.log("partyAOLUser", partyAOLUser);
+      }
       const partyBOLUser = await this.apiClient.getUserDetails(this.state.partyBEmail);
+      if (Object.keys(partyBOLUser).length === 0) {
+        throw ("No OpenLaw account exists with Second Participant's email. You must create an account in Openlaw with this email.")
+      } else {
+        console.log("partyBOLUser", partyBOLUser);
+      }
       console.log("ndaTemplate", ndaTemplate);
 
       const ctResponse = Openlaw.compileTemplate(ndaTemplate.content);
@@ -179,7 +188,7 @@ class OpenLaw extends Component {
           <Header as='h1' attached='top'>
             Create New Joint Venture Project 
             <a target='blank' href="https://github.com/kaleido-io/kaleido-samples-gallery/tree/master/docs/openlaw" 
-              style={{marginLeft: '50px', fontSize: 'small'}}>view instructions
+              style={{marginLeft: '50px', fontSize: 'medium'}}>view instructions
             </a>
           </Header>
           <Segment attached>
