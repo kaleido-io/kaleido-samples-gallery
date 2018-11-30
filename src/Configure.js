@@ -14,10 +14,11 @@ class Configure extends Component {
     this.openlawRpcEndpoint = React.createRef()
     this.openlawAccountEmail = React.createRef()
     this.openlawAccountPassword = React.createRef()
-    // this.idRegistryRpcEndpoint = React.createRef()
+    this.idRegistryRpcEndpoint = React.createRef()
     this.chainlinkLinkAddr = React.createRef()
     this.chainlinkOracleAddr = React.createRef()
     this.chainlinkApiEndpoint = React.createRef()
+    this.apiKey = React.createRef()
   }
 
   componentDidMount() {
@@ -31,10 +32,11 @@ class Configure extends Component {
     this.openlawRpcEndpoint.current.value = localStorage.getItem('openlawRpcEndpoint');
     this.openlawAccountEmail.current.value = localStorage.getItem('openlawAccountEmail');
     this.openlawAccountPassword.current.value = localStorage.getItem('openlawAccountPassword');
-    // this.idRegistryRpcEndpoint.current.value = localStorage.getItem('idRegistryRpcEndpoint');
+    this.idRegistryRpcEndpoint.current.value = localStorage.getItem('idRegistryRpcEndpoint');
     this.chainlinkLinkAddr.current.value = localStorage.getItem('chainlinkLinkAddr');
     this.chainlinkOracleAddr.current.value = localStorage.getItem('chainlinkOracleAddr');
     this.chainlinkApiEndpoint.current.value = localStorage.getItem('chainlinkApiEndpoint');
+    this.apiKey.current.value = localStorage.getItem('apiKey');
   }
 
   updateLocalStorage = () => {
@@ -48,10 +50,11 @@ class Configure extends Component {
     localStorage.setItem('openlawRpcEndpoint', this.openlawRpcEndpoint.current.value);
     localStorage.setItem('openlawAccountEmail', this.openlawAccountEmail.current.value);
     localStorage.setItem('openlawAccountPassword', this.openlawAccountPassword.current.value);
-    // localStorage.setItem('idRegistryRpcEndpoint', this.idRegistryRpcEndpoint.current.value);
+    localStorage.setItem('idRegistryRpcEndpoint', this.idRegistryRpcEndpoint.current.value);
     localStorage.setItem('chainlinkLinkAddr', this.chainlinkLinkAddr.current.value);
     localStorage.setItem('chainlinkOracleAddr', this.chainlinkOracleAddr.current.value);
     localStorage.setItem('chainlinkApiEndpoint', this.chainlinkApiEndpoint.current.value);
+    localStorage.setItem('apiKey', this.apiKey.current.value);
     alert('latest settings saved!')
   }
 
@@ -99,6 +102,13 @@ class Configure extends Component {
                   <small>(ex: https://zz..-zz..-rpc.us-east-2.kaleido.io)</small>
                 </div>
               </div>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">Consortia ID (for block explorer & ID Registry)</label>
+                <div className="col-sm-6">
+                  <input type="text" className="form-control col-sm-12" ref={this.consortiaId} />
+                  <small>(ex: zzabcd1234)</small>
+                </div>
+              </div>
             </div>
             
             <div className="configureSection">
@@ -109,13 +119,6 @@ class Configure extends Component {
                 </div>
                 <div className="headerText">HDWallet</div>
               </h5>
-              <div className="form-group row">
-                <label className="col-sm-3 col-form-label">Consortia ID (for block explorer)</label>
-                <div className="col-sm-6">
-                  <input type="text" className="form-control col-sm-12" ref={this.consortiaId} />
-                  <small>(ex: zzabcd1234)</small>
-                </div>
-              </div>
               <div className="form-group row">
                 <label className="col-sm-3 col-form-label">HDWallet API endpoint</label>
                 <div className="col-sm-8">
@@ -147,14 +150,31 @@ class Configure extends Component {
                 </div>
               </div>
             </div>
-              {/* <h5>ID Registry</h5>
+
+
+            <div className="configureSection">
+              <h5 className="smallHeader clearfix">
+                <div className="headerImage">
+                  <img style={{maxWidth: '100%', maxHeight: '100%'}} alt=""
+                      src={process.env.PUBLIC_URL + '/imgs/idregistry.png'} />
+                </div>
+                <div className="headerText">ID Registry</div>
+              </h5>
               <div className="form-group row">
-                <label className="col-sm-2 col-form-label">ID Registry RPC endpoint</label>
-                <div className="col-sm-6">
+                <label className="col-sm-3 col-form-label">ID Registry API endpoint</label>
+                <div className="col-sm-8">
                   <input type="text" className="form-control col-sm-12" ref={this.idRegistryRpcEndpoint} />
                   <small>(ex: https://zz..-zz..-idregistry.us-east-2.kaleido.io)</small>
                 </div>
-              </div> */}
+              </div>
+              <div className="form-group row">
+                <label className="col-sm-3 col-form-label">Kaleido API Key</label>
+                <div className="col-sm-8">
+                  <input type="text" className="form-control col-sm-12" ref={this.apiKey} />
+                  <small>(ex: zz......)</small>
+                </div>
+              </div>
+            </div>
 
             <div className="configureSection">
               <h5 className="smallHeader clearfix">

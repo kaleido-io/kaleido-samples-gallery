@@ -16,6 +16,7 @@ const utils = {
     t.chainlinkLinkAddr = localStorage.getItem('chainlinkLinkAddr');
     t.chainlinkOracleAddr = localStorage.getItem('chainlinkOracleAddr');
     t.chainlinkApiEndpoint = localStorage.getItem('chainlinkApiEndpoint');
+    t.apiKey = localStorage.getItem('apiKey');
   },
 
   buildWeb3(t) {
@@ -56,6 +57,17 @@ const utils = {
     let endpoint = serviceRpcEndpoint.replace(prefix, '')
     if (useWebsocket) endpoint = endpoint.replace('-rpc.', '-wss.')
     return `${protocol}${t.appCredsUsername}:${t.appCredsPassword}@${endpoint}`
+  },
+
+  parseEnvironmentId(rpcEndpoint) {
+    let beginEnvId = rpcEndpoint.indexOf('://zz')
+    return rpcEndpoint.slice(beginEnvId+3, beginEnvId+13)
+  },
+
+  parseServiceId(rpcEndpoint) {
+    let envId = utils.parseEnvironmentId(rpcEndpoint)
+    let beginEnvId = rpcEndpoint.indexOf(envId)
+    return rpcEndpoint.slice(beginEnvId+(envId.length+1), beginEnvId+(envId.length+1)+10)
   }
 }
 
