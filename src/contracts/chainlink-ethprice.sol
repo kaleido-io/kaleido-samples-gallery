@@ -24,11 +24,11 @@ contract ChainlinkEthPrice is Chainlinked {
     }
 
     function requestEthereumPrice(string _currency) public returns (bytes32 requestId) {
-        ChainlinkLib.Run memory run = newRun(jobId, this, "fulfillEthereumPrice(bytes32,uint256)");
+        ChainlinkLib.Run memory run = newRun(jobId, this, this.fulfillEthereumPrice.selector);
         run.add("url", "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD,EUR,JPY");
         run.add("path", _currency);
         run.addInt("times", 100);
-        requestId = chainlinkRequest(run, LINK(0));
+        requestId = chainlinkRequest(run, 0);
     }
 
     function fulfillEthereumPrice(bytes32 _requestId, uint256 _reportedPrice)
