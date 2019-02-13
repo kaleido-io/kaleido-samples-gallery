@@ -129,6 +129,12 @@ class AuditLog extends Component {
     });
   };
 
+  refresh = () => {
+    this.setState(() => ({
+      refreshing: true
+    }), window.location.reload());
+  }
+
   renderTimelines() {
     let records = [], max = 100
     for (let i = this.state.auditRecordCount - 1; i >= 0 && max > 0; i--, max--) {
@@ -295,47 +301,57 @@ class AuditLog extends Component {
               {this.state.msg && !this.state.validMsg ? " invalid json " : ""}
             </div>
           </div>
-          {this.state.auditRecordCount > 0 ?
+          
           <div>
             <hr />
-            <h6>Audit log history (most recent records appear at top)</h6>
-            <br />
-            <div className="row col-sm-12">
-              <div style={timelinePanel} className="col-sm-3">
-                <Timeline>
-                  {this.renderTimelines()}
-                </Timeline>
-              </div>
-              <div className="col-sm-8">
-                { !this.state.fetchingRecord && this.state.viewRecordId > 0 ?
-                <div>
-                  <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Record #</label>
-                    <div className="col-sm-10">
-                      <input type="text" readOnly={true} className="form-control-plaintext" value={this.state.viewRecordId}></input>
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Entity address</label>
-                    <div className="col-sm-10">
-                      <input type="text" readOnly={true} className="form-control-plaintext" value={this.state.viewRecordEntityAddress}></input>
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Payload</label>
-                    <div className="col-sm-10">
-                      <pre style={{backgroundColor:'#F3F2F2'}}>
-                        <JSONPretty style={{marginLeft:'15px'}} id="json-pretty" json={this.state.viewPrettyJson} className="form-control-plaintext"></JSONPretty>
-                      </pre>
-                    </div>
-                  </div> 
-                </div> : 
-                <div>
-                  { this.state.viewJsonMessage }
-                </div> }
-              </div>
+            <div className="row">
+              <h6 className="col-sm-5">Audit log history (most recent records appear at top)</h6>
+              <button disabled={this.state.refreshing || this.state.addingMsg}
+                      type="button" className="btn btn-sm btn-secondary" onClick={() => this.refresh()}>
+                {this.state.refreshing ? "Refreshing history..." : "Refresh history"}
+              </button>
             </div>
-          </div> : null }
+            
+            {this.state.auditRecordCount > 0 ?
+            <div>
+              <br />
+              <div className="row col-sm-12">
+                <div style={timelinePanel} className="col-sm-3">
+                  <Timeline>
+                    {this.renderTimelines()}
+                  </Timeline>
+                </div>
+                <div className="col-sm-8">
+                  { !this.state.fetchingRecord && this.state.viewRecordId > 0 ?
+                  <div>
+                    <div className="form-group row">
+                      <label className="col-sm-2 col-form-label">Record #</label>
+                      <div className="col-sm-10">
+                        <input type="text" readOnly={true} className="form-control-plaintext" value={this.state.viewRecordId}></input>
+                      </div>
+                    </div>
+                    <div className="form-group row">
+                      <label className="col-sm-2 col-form-label">Entity address</label>
+                      <div className="col-sm-10">
+                        <input type="text" readOnly={true} className="form-control-plaintext" value={this.state.viewRecordEntityAddress}></input>
+                      </div>
+                    </div>
+                    <div className="form-group row">
+                      <label className="col-sm-2 col-form-label">Payload</label>
+                      <div className="col-sm-10">
+                        <pre style={{backgroundColor:'#F3F2F2'}}>
+                          <JSONPretty style={{marginLeft:'15px'}} id="json-pretty" json={this.state.viewPrettyJson} className="form-control-plaintext"></JSONPretty>
+                        </pre>
+                      </div>
+                    </div> 
+                  </div> : 
+                  <div>
+                    { this.state.viewJsonMessage }
+                  </div> }
+                </div>
+              </div>
+            </div> : null }
+          </div>
         </div> : null }
       </main>
     );
