@@ -7,6 +7,7 @@ import OpenLaw from './OpenLaw'
 import IDregistry from './IDregistry'
 import AuditLog from './AuditLog'
 import Chainlink from './Chainlink'
+import Rhombus from './Rhombus'
 import './App.css';
 
 class App extends Component {
@@ -44,6 +45,9 @@ class App extends Component {
                 <Link to="/chainlink">
                   <button className="btn btn-link">Chainlink</button>
                 </Link>
+                <Link to="/rhombus">
+                  <button className="btn btn-link">Rhombus</button>
+                </Link>
               </div>
             </div>
           </header>
@@ -55,6 +59,7 @@ class App extends Component {
             <Route exact path="/openlaw" component={OpenLaw} />
             <Route exact path="/auditlog" component={AuditLog} />
             <Route exact path="/chainlink" component={Chainlink} />
+            <Route exact path="/rhombus" component={Rhombus} />
           </div>
         </div>
       </Router>
