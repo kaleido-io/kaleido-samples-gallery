@@ -33,7 +33,7 @@ class HDwallet extends Component {
       }))
       return
     }
-    this.blockExplorerUrl = this.nodeRpcEndpoint.endsWith('dev.photic.io') ? 'explorer-dev.photic.io' : 'explorer.kaleido.io'
+    this.blockExplorerUrl = 'explorer.kaleido.io'
     this.setState(() => ({
       msg: "Sample message"
     }))

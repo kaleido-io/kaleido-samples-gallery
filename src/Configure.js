@@ -196,7 +196,7 @@ class Configure extends Component {
                 <label className="col-sm-3 col-form-label">Chainlink API endpoint</label>
                 <div className="col-sm-8">
                   <input type="text" className="form-control col-sm-12" ref={this.chainlinkApiEndpoint} />
-                  <small>(ex: https://zz..-zz..-chainlink.dev-svcs.photic.io)</small>
+                  <small>(ex: https://u0..-u0..-chainlink.us-east-2-svcs.kaleido.io)</small>
                 </div>
               </div>
               <div className="form-group row">
