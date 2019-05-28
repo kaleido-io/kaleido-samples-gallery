@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "bb16cb02c1816c00195e",
-    "url": "/kaleido-samples-gallery/static/css/main.6f2893c7.chunk.css"
+    "revision": "e122a37a2e7856fd3944",
+    "url": "/kaleido-samples-gallery/static/css/main.7454f477.chunk.css"
   },
   {
-    "revision": "bb16cb02c1816c00195e",
-    "url": "/kaleido-samples-gallery/static/js/main.bb16cb02.chunk.js"
+    "revision": "e122a37a2e7856fd3944",
+    "url": "/kaleido-samples-gallery/static/js/main.e122a37a.chunk.js"
   },
   {
     "revision": "ea933f3b603e360ae7f5",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/kaleido-samples-gallery/static/media/chainlink-ethprice.e3252272.sol"
   },
   {
-    "revision": "b15fd8a53c3c25d1602d2961c2060c38",
+    "revision": "eeba3937a7bb15cfe8d24a3aaea6b867",
     "url": "/kaleido-samples-gallery/index.html"
   }
 ];
