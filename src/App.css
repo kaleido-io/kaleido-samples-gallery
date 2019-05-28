@@ -1,15 +1,12 @@
 .modal {top:auto;left:auto;bottom:auto;right:auto;}
 
 .mk-logo__title {
-  background-size: contain;
-  height: 28px;
   width: 178px;
-  text-indent: -9999em; }
+}
 
 .samplesHeader {
   background: #3942C1;
-  padding: 30px 0 18px 0;
-  position: fixed;
+  padding: 18px 0;
   top:0;
   width: 100%;
   z-index: 9999;
@@ -18,19 +15,17 @@
   margin-left:auto;
 }
 
+.container {
+  margin-top: 0px;
+}
+
 .samplesHeader button {
   color: white;
   font-size: .85rem;
+  margin-top: 15px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-}
-
-.samplesHeader .kaleidoLogo {
-  color: white;
-  font-size: x-large;
-  font-weight: 700;
-  margin-top: 49px;
 }
 
 h2 {

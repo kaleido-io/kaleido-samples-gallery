@@ -4,8 +4,8 @@ import './App.css';
 
 function MissingConfig(props) {
   return (
-    <main>
-      <div className="container">
+    <main className="container">
+      <div>
         <h2 className="pageHeader clearfix">
           <div className="headerImage">
             <img style={{maxWidth: '100%', maxHeight: '100%'}} alt=""

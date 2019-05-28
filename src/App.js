@@ -19,7 +19,7 @@ class App extends Component {
             <div className="row col-sm-12">
               <div className="col-sm-2"></div>
               <div className="col-sm-2">
-                <img src={process.env.PUBLIC_URL + '/imgs/logo.svg'} alt="" className="mk-logo__title"></img>
+                <img src={process.env.PUBLIC_URL + '/imgs/Kaleido-Logo-Horizontal-White.png'} alt="" className="mk-logo__title"></img>
                 <br />
                 <small style={{color:'white'}}>samples gallery</small>
               </div>

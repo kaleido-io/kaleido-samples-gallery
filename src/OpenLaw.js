@@ -175,7 +175,7 @@ class OpenLaw extends Component {
     }
 
     return (
-      <main>
+      <main className="container">
         <Container>
           <h2 className="pageHeader clearfix">
             <div className="headerImage">
