@@ -32,7 +32,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "chainlink": "github:smartcontractkit/chainlink",
+    "chainlink": "github:smartcontractkit/chainlink#d533288241290f4cff852932755cb04941746ce9",
     "gh-pages": "^2.0.1",
     "sol-merger": "^0.1.2"
   }
