@@ -1,7 +1,7 @@
 {
   "name": "kaleido-samples-gallery",
   "homepage": "http://kaleido-io.github.io/kaleido-samples-gallery",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "openlaw": "^0.1.1",
@@ -32,7 +32,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "chainlink": "github:smartcontractkit/chainlink#d533288241290f4cff852932755cb04941746ce9",
+    "chainlink": "^0.7.10",
     "gh-pages": "^2.0.1",
     "sol-merger": "^0.1.2"
   }
