@@ -32,7 +32,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "chainlink": "^0.7.10",
+    "chainlink": "^0.8.2",
     "gh-pages": "^2.0.1",
     "sol-merger": "^0.1.2"
   }
