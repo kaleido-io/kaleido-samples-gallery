@@ -4,15 +4,15 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "openlaw": "^0.1.1",
+    "openlaw": "^0.1.29",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-event-timeline": "^1.5.4",
     "react-json-pretty": "^1.7.9",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.5",
+    "react-scripts": "5.0.1",
     "semantic-ui-react": "^0.83.0",
-    "web3": "^1.0.0-beta.36"
+    "web3": "^1.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,7 +32,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "chainlink": "^0.7.10",
+    "chainlink": "^0.8.2",
     "gh-pages": "^2.0.1",
     "sol-merger": "^0.1.2"
   }
