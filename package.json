@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "openlaw": "^0.1.1",
+    "openlaw": "^0.1.29",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-event-timeline": "^1.5.4",
@@ -32,7 +32,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "chainlink": "^0.7.10",
+    "chainlink": "^0.8.2",
     "gh-pages": "^2.0.1",
     "sol-merger": "^0.1.2"
   }
